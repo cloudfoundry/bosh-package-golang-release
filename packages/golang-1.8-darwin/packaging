@@ -1,0 +1,6 @@
+set -e -x -u
+
+tar xzf golang-1.8/go1.8.3.darwin-amd64.tar.gz
+
+cp -R go/* ${BOSH_INSTALL_TARGET}
+cp compile.env ${BOSH_INSTALL_TARGET}/bosh/compile.env
