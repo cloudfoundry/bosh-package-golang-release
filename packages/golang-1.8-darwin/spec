@@ -2,5 +2,6 @@
 name: golang-1.8-darwin
 
 files:
-- compile.env
-- golang-1.8/go1.8.3.darwin-amd64.tar.gz
+- compile.env.darwin
+- compile.env.generic
+- go1.8.3.darwin-amd64.tar.gz
