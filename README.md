@@ -3,7 +3,7 @@
 To vendor golang package into your release, run:
 
 ```
-$ bosh vendor-package golang-1.8-linux ~/workspace/bosh-packages/golang
+$ bosh vendor-package golang-1.8-linux ~/workspace/bosh-packages/golang-release
 ```
 
 Included packages:
