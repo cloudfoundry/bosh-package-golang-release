@@ -1,6 +1,8 @@
 go1.8.3.darwin-amd64.tar.gz:
   size: 89707433
+  object_id: 09bc36a6-11e0-419f-5c34-c0001598347f
   sha: sha256:f20b92bc7d4ab22aa18270087c478a74463bd64a893a94264434a38a4b167c05
 go1.8.3.linux-amd64.tar.gz:
   size: 90029041
+  object_id: 4b39d8bc-fa77-4595-6211-03cd63a20bc2
   sha: sha256:1862f4c3d3907e59b04a757cfda0ea7aa9ef39274af99a784f5be843c80c6772

@@ -5,5 +5,6 @@ tar xzf go1.8.3.linux-amd64.tar.gz
 cp -R go/* ${BOSH_INSTALL_TARGET}
 
 mkdir ${BOSH_INSTALL_TARGET}/bosh
+cp runtime.env.linux   ${BOSH_INSTALL_TARGET}/bosh/runtime.env
 cp compile.env.linux   ${BOSH_INSTALL_TARGET}/bosh/compile.env
 cp compile.env.generic ${BOSH_INSTALL_TARGET}/bosh/compile.env.generic

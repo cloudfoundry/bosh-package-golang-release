@@ -1,0 +1,10 @@
+#!/bin/bash
+
+set -eux
+
+echo "Testing compile compability"
+/var/vcap/packages/golang-1.8-linux-test/bin/test
+
+echo "Testing runtime compability"
+source /var/vcap/packages/golang-1.8-linux/bosh/runtime.env
+go run /var/vcap/packages/golang-1.8-linux-test/test.go

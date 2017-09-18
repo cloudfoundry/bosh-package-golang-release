@@ -3,7 +3,9 @@
 To vendor golang package into your release, run:
 
 ```
-$ bosh vendor-package golang-1.8-linux ~/workspace/bosh-packages/golang-release
+$ git clone https://github.com/bosh-packages/golang-release
+$ cd ~/workspace/your-release
+$ bosh vendor-package golang-1.8-linux ~/workspace/golang-release
 ```
 
 Included packages:
@@ -26,6 +28,10 @@ go build ...
 source /var/vcap/packages/golang-1.8-linux/bosh/runtime.env
 go run ...
 ```
+
+## Development
+
+To run tests `cd tests/ && BOSH_ENVIRONMENT=vbox ./run.sh`
 
 ## TODO
 

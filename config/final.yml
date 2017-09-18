@@ -2,4 +2,5 @@ name: golang
 blobstore:
   provider: s3
   options:
-    bucket_name: golang-release
+    bucket_name: bosh-packages-golang-release
+

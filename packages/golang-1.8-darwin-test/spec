@@ -1,0 +1,8 @@
+---
+name: golang-1.8-darwin-test
+
+dependencies:
+- golang-1.8-darwin
+
+files:
+- test.go
