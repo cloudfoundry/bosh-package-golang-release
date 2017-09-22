@@ -12,6 +12,7 @@ Included packages:
 
 - golang-1.8-linux
 - golang-1.8-darwin
+- golang-1.8-windows
 
 To use `golang-*` package for compilation in your packaging script:
 
@@ -33,6 +34,3 @@ go run ...
 
 To run tests `cd tests/ && BOSH_ENVIRONMENT=vbox ./run.sh`
 
-## TODO
-
-- windows support

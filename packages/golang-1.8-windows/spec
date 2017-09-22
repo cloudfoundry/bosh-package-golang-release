@@ -1,0 +1,7 @@
+---
+name: golang-1.8-windows
+
+files:
+- compile.env.windows
+- runtime.env.windows
+- go1.8.3.windows-amd64.zip

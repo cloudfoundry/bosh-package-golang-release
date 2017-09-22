@@ -6,3 +6,7 @@ go1.8.3.linux-amd64.tar.gz:
   size: 90029041
   object_id: 4b39d8bc-fa77-4595-6211-03cd63a20bc2
   sha: sha256:1862f4c3d3907e59b04a757cfda0ea7aa9ef39274af99a784f5be843c80c6772
+go1.8.3.windows-amd64.zip:
+  size: 96254597
+  object_id: 19d2ff85-fe1e-4a45-596a-e2f07cb455a9
+  sha: sha256:de026caef4c5b4a74f359737dcb2d14c67ca45c45093755d3b0d2e0ee3aafd96
