@@ -1,6 +1,6 @@
 set -e -x -u
 
-tar xzf go1.8.3.darwin-amd64.tar.gz
+tar xzf go*.darwin-amd64.tar.gz
 
 cp -R go/* ${BOSH_INSTALL_TARGET}
 

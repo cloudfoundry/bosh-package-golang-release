@@ -4,4 +4,4 @@ name: golang-1.9-windows
 files:
 - 1.9/compile.env.windows
 - 1.9/runtime.env.windows
-- go1.9.windows-amd64.zip
+- go1.9*.windows-amd64.zip

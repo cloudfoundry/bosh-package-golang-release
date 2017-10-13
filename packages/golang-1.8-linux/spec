@@ -5,4 +5,4 @@ files:
 - 1.8/runtime.env.linux
 - 1.8/compile.env.linux
 - 1.8/compile.env.generic
-- go1.8.3.linux-amd64.tar.gz
+- go1.8*.linux-amd64.tar.gz
