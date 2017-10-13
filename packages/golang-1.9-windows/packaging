@@ -26,8 +26,8 @@ try {
 try {
   Write-Host "Copying item compile.env.windows ${COMPILE_ENV}"
   New-Item "${COMPILE_ENV}" -type directory
-  Copy-Item (Get-ChildItem "1.8\compile.env.windows").FullName -Destination "${COMPILE_ENV}\compile.ps1"
-  Copy-Item (Get-ChildItem "1.8\runtime.env.windows").FullName -Destination "${COMPILE_ENV}\runtime.ps1"
+  Copy-Item (Get-ChildItem "1.9\compile.env.windows").FullName -Destination "${COMPILE_ENV}\compile.ps1"
+  Copy-Item (Get-ChildItem "1.9\runtime.env.windows").FullName -Destination "${COMPILE_ENV}\runtime.ps1"
 } catch {
   Write-Host "$_.Exception.Message"
   Exit 1

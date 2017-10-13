@@ -22,7 +22,21 @@ instance_groups:
   azs: [z1]
   instances: 1
   jobs:
-  - name: ((job-name))
+  - name: golang-1.8-((job-name))
+    release: golang
+    properties: {}
+  vm_type: default
+  vm_extensions:
+  - 50GB_ephemeral_disk
+  stemcell: default
+  networks:
+  - name: default
+
+- name: golang-1.9-test
+  azs: [z1]
+  instances: 1
+  jobs:
+  - name: golang-1.9-((job-name))
     release: golang
     properties: {}
   vm_type: default

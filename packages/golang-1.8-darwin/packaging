@@ -5,5 +5,5 @@ tar xzf go1.8.3.darwin-amd64.tar.gz
 cp -R go/* ${BOSH_INSTALL_TARGET}
 
 mkdir ${BOSH_INSTALL_TARGET}/bosh
-cp compile.env.darwin  ${BOSH_INSTALL_TARGET}/bosh/compile.env
-cp compile.env.generic ${BOSH_INSTALL_TARGET}/bosh/compile.env.generic
+cp 1.8/compile.env.darwin  ${BOSH_INSTALL_TARGET}/bosh/compile.env
+cp 1.8/compile.env.generic ${BOSH_INSTALL_TARGET}/bosh/compile.env.generic

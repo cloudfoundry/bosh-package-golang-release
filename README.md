@@ -13,6 +13,9 @@ Included packages:
 - golang-1.8-linux
 - golang-1.8-darwin
 - golang-1.8-windows
+- golang-1.9-linux
+- golang-1.9-darwin
+- golang-1.9-windows
 
 To use `golang-*` package for compilation in your packaging script:
 
@@ -40,7 +43,7 @@ or on Windows:
 . C:\var\vcap\packages\golang-1.8-windows\bosh\runtime.ps1
 go build ...
 ```
+
 ## Development
 
 To run tests `cd tests/ && BOSH_ENVIRONMENT=vbox ./run.sh`
-

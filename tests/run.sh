@@ -12,10 +12,11 @@ echo "-----> `date`: Delete previous deployment"
 bosh -n -d test delete-deployment --force
 
 echo "-----> `date`: Deploy"
-( set -e; cd ./..; bosh -n -d test deploy ./manifests/test.yml )
+( set -e; cd ./..; bosh -n -d test deploy ./manifests/test.yml -v os=ubuntu-trusty -v job-name=test )
 
 echo "-----> `date`: Run test errand"
 bosh -n -d test run-errand golang-1.8-test
+bosh -n -d test run-errand golang-1.9-test
 
 echo "-----> `date`: Delete deployments"
 bosh -n -d test delete-deployment
