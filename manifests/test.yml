@@ -26,8 +26,7 @@ instance_groups:
     release: golang
     properties: {}
   vm_type: default
-  vm_extensions:
-  - 50GB_ephemeral_disk
+  vm_extensions: [((ephemeral-disk))]
   stemcell: default
   networks:
   - name: default
@@ -40,8 +39,7 @@ instance_groups:
     release: golang
     properties: {}
   vm_type: default
-  vm_extensions:
-  - 50GB_ephemeral_disk
+  vm_extensions: [((ephemeral-disk))]
   stemcell: default
   networks:
   - name: default
