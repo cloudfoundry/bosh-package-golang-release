@@ -1,6 +1,6 @@
 try {
   $BOSH_INSTALL_TARGET = Resolve-Path $env:BOSH_INSTALL_TARGET
- 
+
   . C:\var\vcap\packages\golang-1.8-windows\bosh\compile.ps1
 
   Copy-Item (Get-ChildItem "test.go").FullName -Destination ${BOSH_INSTALL_TARGET}
