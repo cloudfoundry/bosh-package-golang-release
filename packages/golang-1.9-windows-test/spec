@@ -6,3 +6,4 @@ dependencies:
 
 files:
 - test.go
+- exiter.ps1

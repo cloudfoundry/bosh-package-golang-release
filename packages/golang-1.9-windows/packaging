@@ -1,3 +1,5 @@
+. ./exiter.ps1
+
 try {
   $BOSH_INSTALL_TARGET = Resolve-Path $env:BOSH_INSTALL_TARGET
   $COMPILE_ENV = Join-Path -Path "${BOSH_INSTALL_TARGET}" -ChildPath "bosh"
