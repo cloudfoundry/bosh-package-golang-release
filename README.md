@@ -1,5 +1,7 @@
 # golang
 
+Note: requires bosh-cli version `v2.0.36` or above.
+
 To vendor golang package into your release, run:
 
 ```
