@@ -1,24 +1,24 @@
-go1.8.4.darwin-amd64.tar.gz:
-  size: 97389356
-  object_id: cc7d1126-bd48-4267-5107-861fa8cd3925
-  sha: sha256:cf803053aec24425d7be986af6dff0051bb48527bcdfa5b9ffeb4d40701ab54e
-go1.8.4.linux-amd64.tar.gz:
-  size: 99071672
-  object_id: 9ec2e5f4-2d54-4337-79c2-c55ce30b33a0
-  sha: sha256:0ef737a0aff9742af0f63ac13c97ce36f0bbc8b67385169e41e395f34170944f
-go1.8.4.windows-amd64.zip:
-  size: 104389130
-  object_id: cc05759c-07db-4832-553b-64e6baba07ae
-  sha: sha256:2ddfea037fd5e2eeb0cb854c095f6e44aaec27e8bbf76dca9a11a88e3a49bbf7
-go1.9.1.darwin-amd64.tar.gz:
-  size: 102363520
-  object_id: b4b7644f-a01d-47e7-5586-b8ba5232ece9
-  sha: sha256:59bc6deee2969dddc4490b684b15f63058177f5c7e27134c060288b7d76faab0
-go1.9.1.linux-amd64.tar.gz:
-  size: 104197862
-  object_id: fefabc35-62fd-4b63-65a9-d7c6bc8cb167
-  sha: sha256:07d81c6b6b4c2dcf1b5ef7c27aaebd3691cdb40548500941f92b221147c5d9c7
-go1.9.1.windows-amd64.zip:
-  size: 109749924
-  object_id: 19fe35f2-9416-428a-5b51-d40389e7e13b
-  sha: sha256:8dc72a3881388e4e560c2e45f6be59860b623ad418e7da94e80fee012221cc81
+go1.8.5.darwin-amd64.tar.gz:
+  size: 97396903
+  object_id: f6169940-175d-4c6f-5b41-26fcd7079835
+  sha: sha256:af5bd0c8e669a61f4b38fcce03bbf02f1ce672724a95c2ad61e89c6785f5c51e
+go1.8.5.linux-amd64.tar.gz:
+  size: 99077377
+  object_id: 8f7338c9-63ad-40fd-77e3-f5797eff646a
+  sha: sha256:4f8aeea2033a2d731f2f75c4d0a4995b357b22af56ed69b3015f4291fca4d42d
+go1.8.5.windows-amd64.zip:
+  size: 104034058
+  object_id: 8f756e6c-5fe9-4afb-44f5-a1f03b2fac67
+  sha: sha256:137827cabff27cc36cbe13018f629a6418c2a6af85adde1b1bfb8d000c9fc1ae
+go1.9.2.darwin-amd64.tar.gz:
+  size: 102431477
+  object_id: a77fa0d6-7260-4e78-7c52-42052997453d
+  sha: sha256:73fd5840d55f5566d8db6c0ffdd187577e8ebe650c783f68bd27cbf95bde6743
+go1.9.2.linux-amd64.tar.gz:
+  size: 104247844
+  object_id: 0b7c0947-5d9a-427f-7f76-cb23f624822e
+  sha: sha256:de874549d9a8d8d8062be05808509c09a88a248e77ec14eb77453530829ac02b
+go1.9.2.windows-amd64.zip:
+  size: 109420764
+  object_id: e1077cad-3aa3-4fa8-7ed0-7b5ff63d64f1
+  sha: sha256:682ec3626a9c45b657c2456e35cadad119057408d37f334c6c24d88389c2164c
