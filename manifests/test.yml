@@ -18,11 +18,11 @@ update:
   update_watch_time: 5000-60000
 
 instance_groups:
-- name: golang-1.8-test
+- name: golang-1.10-test
   azs: [z1]
   instances: 1
   jobs:
-  - name: golang-1.8-((job-name))
+  - name: golang-1.10-((job-name))
     release: golang
     properties: {}
   vm_type: default
