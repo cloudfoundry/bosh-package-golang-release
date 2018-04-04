@@ -12,8 +12,8 @@ while getopts "wl" option; do
       ;;
     l)
       export STEMCELL_NAME="bosh-warden-boshlite-ubuntu-trusty-go_agent"
-      export STEMCELL_VERSION="3445.2"
-      export STEMCELL_SHA1="7ff35e03ab697998ded7a1698fe6197c1a5b2258"
+      export STEMCELL_VERSION="3541.10"
+      export STEMCELL_SHA1="11c07b63953710d68b7f068e0ecb9cb8f7e64f6a"
       export OS="ubuntu-trusty"
       export JOB_NAME="test"
       export VM_EXTENSIONS="[]"
@@ -37,7 +37,7 @@ popd
 
 release_version=$(bosh releases --json | jq -r .Tables[0].Rows[0].version)
 
-echo "----> `date`: Export"
+echo "----> `date`: Export to test Windows compilation"
 pushd $PWD
   bosh -n -d test export-release golang/${release_version//\*} "${OS}/${STEMCELL_VERSION}" --dir ./releases
 popd
