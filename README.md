@@ -12,12 +12,9 @@ $ bosh vendor-package golang-1.10-linux ~/workspace/golang-release
 
 Included packages:
 
-- golang-1.10-linux
-- golang-1.10-darwin
-- golang-1.10-windows
-- golang-1.9-linux
-- golang-1.9-darwin
-- golang-1.9-windows
+- `golang-1-{linux,darwin,windows}`: updated with latest version of go 1.x
+- `golang-1.9-{linux,darwin,windows}`: updated with latest version of go 1.9.x
+- `golang-1.10-{linux,darwin,windows}`: updated with latest version of go 1.10.x
 
 To use `golang-*` package for compilation in your packaging script:
 

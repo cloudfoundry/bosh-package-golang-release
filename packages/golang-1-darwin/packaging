@@ -1,0 +1,9 @@
+set -e -x -u
+
+tar xzf go*.darwin-amd64.tar.gz
+
+cp -R go/* ${BOSH_INSTALL_TARGET}
+
+mkdir ${BOSH_INSTALL_TARGET}/bosh
+cp 1/compile.env.darwin  ${BOSH_INSTALL_TARGET}/bosh/compile.env
+cp 1/compile.env.generic ${BOSH_INSTALL_TARGET}/bosh/compile.env.generic
