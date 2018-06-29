@@ -21,7 +21,13 @@ jobs:
   serial: true
   plan:
   - aggregate:
-    - get: golang
+    - get: golang-1.9
+      resource: golang
+      version: "1.9"
+      trigger: true
+    - get: golang-1.10
+      resource: golang
+      version: "1.10"
       trigger: true
     - get: golang-release
     - get: bosh-src
@@ -62,9 +68,11 @@ resources:
             "hashes": [ { "type": "sha-256", "hash": .sha256 } ] } ) ) } )[]'
     include_files:
     - go*.linux-amd64.tar.gz
+    - go*.windows-amd64.zip
+    - go*.darwin-amd64.tar.gz
 
 resource_types:
 - name: dynamic-metalink
   type: docker-image
   source:
-    repository: dpb587/dynamic-metalink-resource<Paste>
+    repository: dpb587/dynamic-metalink-resource
