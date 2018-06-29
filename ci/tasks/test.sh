@@ -9,4 +9,7 @@ build_dir="${script_dir}/../../.."
 
 source /tmp/local-bosh/director/env
 
+curl -Lo /usr/local/bin/jq https://github.com/stedolan/jq/releases/download/jq-1.5/jq-linux64
+chmod +x /usr/local/bin/jq
+
 ${build_dir}/golang-release/tests/run.sh -l
