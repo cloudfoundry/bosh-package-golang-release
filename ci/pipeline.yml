@@ -1,0 +1,36 @@
+---
+groups:
+- name: golang-release
+  jobs:
+  - test
+
+jobs:
+- name: test
+  serial: true
+  plan:
+  - aggregate:
+    - get: golang-release
+    - get: bosh-src
+    - get: stemcell
+  - task: test
+    file: ci/tasks/test.yml
+
+resources:
+- name: bosh-src
+  type: git
+  source:
+    uri: https://github.com/cloudfoundry/bosh
+    branch: master
+
+- name: golang-release
+  type: git
+  source:
+    uri: https://github.com/bosh-packages/golang-release.git
+    branch: master
+
+- name: stemcell
+  type: bosh-io-stemcell
+  source:
+    name: bosh-warden-boshlite-ubuntu-trusty-go_agent
+
+
