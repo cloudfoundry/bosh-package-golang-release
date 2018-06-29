@@ -12,4 +12,4 @@ inputs:
 - name: stemcell
 
 run:
-  path: bosh-src/ci/tasks/test.sh
+  path: golang-release/ci/tasks/test.sh

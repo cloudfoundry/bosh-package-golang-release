@@ -13,13 +13,13 @@ jobs:
     - get: bosh-src
     - get: stemcell
   - task: test
-    file: ci/tasks/test.yml
+    file: golang-release/ci/tasks/test.yml
 
 resources:
 - name: bosh-src
   type: git
   source:
-    uri: https://github.com/cloudfoundry/bosh
+    uri: https://github.com/cloudfoundry/bosh.git
     branch: master
 
 - name: golang-release
