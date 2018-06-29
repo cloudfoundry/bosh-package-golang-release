@@ -60,7 +60,6 @@ resources:
             "size": .size,
             "urls": [ { "url": "https://dl.google.com/go/\(.filename)" } ],
             "hashes": [ { "type": "sha-256", "hash": .sha256 } ] } ) ) } )[]'
-    version: 1.9.x
     include_files:
     - go*.linux-amd64.tar.gz
 
