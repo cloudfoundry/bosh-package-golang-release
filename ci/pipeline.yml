@@ -16,6 +16,18 @@ jobs:
     privileged: true
     file: golang-release/ci/tasks/test.yml
 
+- name: bump
+  serial: true
+  plan:
+  - aggregate:
+    - get: golang
+      trigger: true
+    - get: golang-release
+    - get: bosh-src
+    - get: stemcell
+  - task: bump
+    file: golang-release/ci/tasks/bump.yml
+
 resources:
 - name: bosh-src
   type: git
@@ -34,4 +46,24 @@ resources:
   source:
     name: bosh-warden-boshlite-ubuntu-trusty-go_agent
 
+- name: golang
+  type: dynamic-metalink
+  source:
+    version_check: |
+      curl -s https://golang.org/dl/?mode=json | jq -r '.[].version[2:]'
+    metalink_get: |
+      curl -s https://golang.org/dl/?mode=json | jq '
+        map(select(.version[2:] == env.version)) | map({
+          "files": (.files | map({
+            "name": .filename,
+            "size": .size,
+            "urls": [ { "url": "https://dl.google.com/go/\(.filename)" } ],
+            "hashes": [ { "type": "sha-256", "hash": .sha256 } ] } ) ) } )[]'
+    version: 1.9.x
+    include_files:
+    - go*.linux-amd64.tar.gz
 
+resource_types:
+- name: dynamic-metalink
+  type: docker-image
+  source:

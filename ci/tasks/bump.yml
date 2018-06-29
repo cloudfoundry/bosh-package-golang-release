@@ -1,0 +1,18 @@
+---
+platform: linux
+
+image_resource:
+  type: docker-image
+  source:
+    repository: bosh/main-bosh-docker
+
+inputs:
+- name: golang
+- name: golang-release
+- name: stemcell
+
+outputs:
+- name: bumped-golang-release
+
+run:
+  path: golang-release/ci/tasks/bump.sh
