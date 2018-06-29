@@ -3,6 +3,7 @@ groups:
 - name: golang-release
   jobs:
   - test
+  - bump
 
 jobs:
 - name: test
@@ -67,3 +68,4 @@ resource_types:
 - name: dynamic-metalink
   type: docker-image
   source:
+    repository: dpb587/dynamic-metalink-resource<Paste>
