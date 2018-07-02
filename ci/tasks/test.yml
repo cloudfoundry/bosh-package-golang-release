@@ -13,3 +13,6 @@ inputs:
 
 run:
   path: golang-release/ci/tasks/test.sh
+
+params:
+  PRIVATE_YML: replace-me

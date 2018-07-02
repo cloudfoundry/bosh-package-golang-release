@@ -12,9 +12,6 @@ inputs:
 - name: golang-release
 - name: stemcell
 
-params:
-  PRIVATE_YML: replace-me
-
 outputs:
 - name: golang-release
   path: bumped-golang-release
