@@ -1,0 +1,22 @@
+---
+platform: linux
+
+image_resource:
+  type: docker-image
+  source:
+    repository: bosh/main-bosh-docker
+
+inputs:
+- name: golang-release
+- name: semver
+
+outputs:
+- name: version-tag
+- name: bumped-semver
+- name: finalized-release
+
+params:
+  PRIVATE_YML: replace-me
+
+run:
+  path: golang-release/ci/tasks/finalize.sh
