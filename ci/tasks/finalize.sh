@@ -17,7 +17,8 @@ pushd finalized-release
   set -x
 
   bosh upload-blobs
-  bosh finalize-release --version $FULL_VERSION
+  bosh create-release --tarball=/tmp/bosh-dev-release.tgz --timestamp-version --force
+  bosh finalize-release --version $FULL_VERSION /tmp/bosh-dev-release.tgz
 
   git add -A
   git status
