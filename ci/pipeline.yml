@@ -22,18 +22,34 @@ jobs:
   plan:
   - aggregate:
     - get: golang-1.9
-      resource: golang
-      version: "1.9"
       trigger: true
     - get: golang-1.10
-      resource: golang
-      version: "1.10"
       trigger: true
     - get: golang-release
-    - get: bosh-src
     - get: stemcell
+    - get: semver
+      params:
+        bump: minor
   - task: bump
     file: golang-release/ci/tasks/bump.yml
+  - task: test
+    privileged: true
+    file: golang-release/ci/tasks/test.yml
+    params:
+      PRIVATE_YML: ((s3_private_yml))
+  - task: finalize
+    file: golang-release/ci/tasks/finalize.yml
+    params:
+      PRIVATE_YML: ((s3_private_yml))
+  - aggregate:
+    - put: semver
+      params:
+        file: bumped-semver/version
+    - put: golang-release
+      params:
+        repository: finalized-release
+        tag: version-tag/tag-name
+        annotate: version-tag/annotate-msg
 
 resources:
 - name: bosh-src
@@ -45,17 +61,47 @@ resources:
 - name: golang-release
   type: git
   source:
-    uri: https://github.com/bosh-packages/golang-release.git
+    uri: git@github.com:bosh-packages/golang-release
     branch: master
+    private_key: ((github_deploy_key))
 
 - name: stemcell
   type: bosh-io-stemcell
   source:
     name: bosh-warden-boshlite-ubuntu-trusty-go_agent
 
-- name: golang
+- name: semver
+  type: semver
+  source:
+    bucket: bosh-packages-golang-release
+    key: version
+    initial_version: 0.8.0
+    access_key_id: ((s3_aws_access_key_id))
+    secret_access_key: ((s3_aws_secret_access_key))
+
+- name: golang-1.9
   type: dynamic-metalink
   source:
+    version: 1.9.x
+    version_check: |
+      curl -s https://golang.org/dl/?mode=json | jq -r '.[].version[2:]'
+    metalink_get: |
+      curl -s https://golang.org/dl/?mode=json | jq '
+        map(select(.version[2:] == env.version)) | map({
+          "files": (.files | map({
+            "name": .filename,
+            "size": .size,
+            "urls": [ { "url": "https://dl.google.com/go/\(.filename)" } ],
+            "hashes": [ { "type": "sha-256", "hash": .sha256 } ] } ) ) } )[]'
+    include_files:
+    - go*.linux-amd64.tar.gz
+    - go*.windows-amd64.zip
+    - go*.darwin-amd64.tar.gz
+
+- name: golang-1.10
+  type: dynamic-metalink
+  source:
+    version: 1.10.x
     version_check: |
       curl -s https://golang.org/dl/?mode=json | jq -r '.[].version[2:]'
     metalink_get: |
