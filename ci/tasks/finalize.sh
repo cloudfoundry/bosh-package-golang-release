@@ -9,7 +9,7 @@ cp -rfp ./golang-release/. finalized-release
 # finalize
 export FULL_VERSION=$(cat semver/version)
 
-pushd finalized-version
+pushd finalized-release
   git status
 
   set +x
