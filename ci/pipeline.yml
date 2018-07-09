@@ -16,6 +16,8 @@ jobs:
   - task: test
     privileged: true
     file: golang-release/ci/tasks/test.yml
+    params:
+      PRIVATE_YML: ((s3_private_yml))
 
 - name: bump
   serial: true
