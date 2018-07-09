@@ -26,6 +26,7 @@ jobs:
     - get: golang-1.10
       trigger: true
     - get: golang-release
+    - get: bosh-src
     - get: stemcell
     - get: semver
       params:
