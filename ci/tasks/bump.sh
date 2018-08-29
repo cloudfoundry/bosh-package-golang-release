@@ -20,7 +20,7 @@ replace_if_necessary 1.10 linux
 replace_if_necessary 1.10 darwin
 replace_if_necessary 1.10 windows
 
-if "$( git status --porcelain )" != ""; then
+if [[ "$( git status --porcelain )" != "" ]]; then
   git commit -am "Bump golang 1.10"
 fi
 
@@ -28,6 +28,6 @@ replace_if_necessary 1.11 linux
 replace_if_necessary 1.11 darwin
 replace_if_necessary 1.11 windows
 
-if "$( git status --porcelain )" != ""; then
+if [[ "$( git status --porcelain )" != "" ]]; then
   git commit -am "Bump golang 1.11"
 fi
