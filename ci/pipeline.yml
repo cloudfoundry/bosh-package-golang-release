@@ -33,6 +33,8 @@ jobs:
         bump: minor
   - task: bump
     file: golang-release/ci/tasks/bump.yml
+    params:
+      PRIVATE_YML: ((s3_private_yml))
   - task: test
     privileged: true
     file: golang-release/ci/tasks/test.yml

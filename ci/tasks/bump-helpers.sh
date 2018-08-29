@@ -8,6 +8,7 @@ function replace_if_necessary() {
       bosh remove-blob ${existing_blob}
     fi
     bosh add-blob --sha2 ../golang-${version}/${blobname} ${blobname}
+    bosh upload-blobs
   fi
 }
 

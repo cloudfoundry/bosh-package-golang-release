@@ -16,15 +16,14 @@ pushd finalized-release
   echo "${PRIVATE_YML}" > config/private.yml
   set -x
 
-  bosh upload-blobs
   bosh create-release --tarball=/tmp/bosh-dev-release.tgz --timestamp-version --force
   bosh finalize-release --version $FULL_VERSION /tmp/bosh-dev-release.tgz
 
   git add -A
   git status
 
-  git config --global user.email "ci@localhost"
-  git config --global user.name "CI Bot"
+  git config user.name "CI Bot"
+  git config user.email "cf-bosh-eng@pivotal.io"
 
   git commit -m "Adding final release $FULL_VERSION via concourse"
 popd
