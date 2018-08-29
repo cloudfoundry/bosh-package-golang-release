@@ -7,7 +7,7 @@ image_resource:
     repository: bosh/main-bosh-docker
 
 inputs:
-- name: golang-1.9
+- name: golang-1.11
 - name: golang-1.10
 - name: golang-release
 - name: stemcell

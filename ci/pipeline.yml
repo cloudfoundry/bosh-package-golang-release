@@ -21,7 +21,7 @@ jobs:
   serial: true
   plan:
   - aggregate:
-    - get: golang-1.9
+    - get: golang-1.11
       trigger: true
     - get: golang-1.10
       trigger: true
@@ -80,10 +80,10 @@ resources:
     access_key_id: ((s3_aws_access_key_id))
     secret_access_key: ((s3_aws_secret_access_key))
 
-- name: golang-1.9
+- name: golang-1.11
   type: dynamic-metalink
   source:
-    version: 1.9.x
+    version: 1.11.x
     version_check: |
       curl -s https://golang.org/dl/?mode=json | jq -r '.[].version[2:]'
     metalink_get: |

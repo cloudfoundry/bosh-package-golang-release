@@ -1,15 +1,3 @@
-go1.9.7.darwin-amd64.tar.gz:
-  size: 116473185
-  object_id: 08b593c8-cd6d-4b51-45b4-c363af3aacdb
-  sha: sha256:3f4f84406dcada4eec785dbc967747f61c1f1b4e36d7545161e282259e9b215f
-go1.9.7.linux-amd64.tar.gz:
-  size: 118297141
-  object_id: 24d0812b-50cc-4148-5cb1-4db34129811a
-  sha: sha256:88573008f4f6233b81f81d8ccf92234b4f67238df0f0ab173d75a302a1f3d6ee
-go1.9.7.windows-amd64.zip:
-  size: 123888185
-  object_id: 391c4fc9-d82f-4443-7624-65b501e96d9e
-  sha: sha256:8db4b21916a3bc79f48d0611202ee5814c82f671b36d5d2efcb446879456cd28
 go1.10.3.darwin-amd64.tar.gz:
   size: 130393769
   object_id: 5faab02b-ab98-4007-4534-126491b35841
