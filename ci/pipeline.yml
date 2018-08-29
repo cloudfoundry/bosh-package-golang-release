@@ -11,8 +11,10 @@ jobs:
   plan:
   - aggregate:
     - get: golang-release
+      trigger: true
     - get: bosh-src
     - get: stemcell
+      trigger: true
   - task: test
     privileged: true
     file: golang-release/ci/tasks/test.yml
