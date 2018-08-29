@@ -50,6 +50,7 @@ jobs:
         file: bumped-semver/version
     - put: golang-release
       params:
+        rebase: true
         repository: finalized-release
         tag: version-tag/tag-name
         annotate: version-tag/annotate-msg
