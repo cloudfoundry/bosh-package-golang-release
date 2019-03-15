@@ -1,0 +1,8 @@
+---
+name: golang-1.12-windows
+
+files:
+- 1.12/compile.env.windows
+- 1.12/runtime.env.windows
+- exiter.ps1
+- go1.12*.windows-amd64.zip

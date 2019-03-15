@@ -1,8 +1,0 @@
----
-name: golang-1.10-linux
-
-files:
-- 1.10/runtime.env.linux
-- 1.10/compile.env.linux
-- 1.10/compile.env.generic
-- go1.10*.linux-amd64.tar.gz

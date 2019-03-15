@@ -1,8 +1,0 @@
----
-name: golang-1.10-darwin-test
-
-dependencies:
-- golang-1.10-darwin
-
-files:
-- test.go

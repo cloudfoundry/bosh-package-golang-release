@@ -25,7 +25,7 @@ jobs:
   - aggregate:
     - get: golang-1.11
       trigger: true
-    - get: golang-1.10
+    - get: golang-1.12
       trigger: true
     - get: golang-release
     - get: bosh-src
@@ -102,10 +102,10 @@ resources:
     - go*.windows-amd64.zip
     - go*.darwin-amd64.tar.gz
 
-- name: golang-1.10
+- name: golang-1.12
   type: dynamic-metalink
   source:
-    version: 1.10.x
+    version: 1.12.x
     version_check: |
       curl -s https://golang.org/dl/?mode=json | jq -r '.[].version[2:]'
     metalink_get: |

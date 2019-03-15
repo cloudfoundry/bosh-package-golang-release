@@ -3,11 +3,11 @@ version: 0.6.0
 commit_hash: 77cc56e
 uncommitted_changes: false
 jobs:
-- name: golang-1.10-test
+- name: golang-1.12-test
   version: 3e3bf4ffae2f5daf422eb309111b6085e211cd37
   fingerprint: 3e3bf4ffae2f5daf422eb309111b6085e211cd37
   sha1: 5aeec3b3bdc848433bbe60115686c0bacb34086e
-- name: golang-1.10-test-windows
+- name: golang-1.12-test-windows
   version: 5729071a4c16ac1c4ba3486a35e0fff1b9ea6da3
   fingerprint: 5729071a4c16ac1c4ba3486a35e0fff1b9ea6da3
   sha1: e7f96cbd2f2f653009b6e72e9f143ae2ade039a2

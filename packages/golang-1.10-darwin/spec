@@ -1,7 +1,0 @@
----
-name: golang-1.10-darwin
-
-files:
-- 1.10/compile.env.darwin
-- 1.10/compile.env.generic
-- go1.10*.darwin-amd64.tar.gz

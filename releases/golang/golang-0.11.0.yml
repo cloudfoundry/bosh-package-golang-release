@@ -11,11 +11,11 @@ jobs:
   version: d9a13c0ca5a53c0d10b95ce51d0e6ee916ca8eaa
   fingerprint: d9a13c0ca5a53c0d10b95ce51d0e6ee916ca8eaa
   sha1: 37e5f237e53b3dd49c21f888286fd5b6228e8bf0
-- name: golang-1.10-test
+- name: golang-1.12-test
   version: 3e3bf4ffae2f5daf422eb309111b6085e211cd37
   fingerprint: 3e3bf4ffae2f5daf422eb309111b6085e211cd37
   sha1: 5aeec3b3bdc848433bbe60115686c0bacb34086e
-- name: golang-1.10-test-windows
+- name: golang-1.12-test-windows
   version: 5729071a4c16ac1c4ba3486a35e0fff1b9ea6da3
   fingerprint: 5729071a4c16ac1c4ba3486a35e0fff1b9ea6da3
   sha1: e7f96cbd2f2f653009b6e72e9f143ae2ade039a2

@@ -4,4 +4,4 @@ name: golang-1-darwin
 files:
 - 1/compile.env.darwin
 - 1/compile.env.generic
-- go1.11*.darwin-amd64.tar.gz
+- go1.12*.darwin-amd64.tar.gz
