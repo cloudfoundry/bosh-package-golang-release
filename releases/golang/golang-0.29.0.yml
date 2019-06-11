@@ -1,0 +1,154 @@
+name: golang
+version: 0.29.0
+commit_hash: bc07c8f
+uncommitted_changes: false
+jobs:
+- name: golang-1-test
+  version: 73ab4d328edc9faa90d91474d4dd58c76db475fc5197063e0c59c19a7c83fe3a
+  fingerprint: 73ab4d328edc9faa90d91474d4dd58c76db475fc5197063e0c59c19a7c83fe3a
+  sha1: sha256:8794b7df2e3ff3aac5556060cee7d1cd43ff0a5e998e8f644ad0ebdd5fd49822
+  packages:
+  - golang-1-linux
+  - golang-1-linux-test
+  - golang-1-darwin-test
+- name: golang-1-test-windows
+  version: 2b9cd57744975e235e7e09005596d42c2c3b78bd7b61a2d05d46f8b9c9083832
+  fingerprint: 2b9cd57744975e235e7e09005596d42c2c3b78bd7b61a2d05d46f8b9c9083832
+  sha1: sha256:380f1b669401438634d2292bff095403ea7b14a55033dda79ce7c6b88dc92a24
+  packages:
+  - golang-1-windows
+  - golang-1-windows-test
+- name: golang-1.11-test
+  version: a4b378f40b7c73c192013e5adf60e2d057c262ca9ffe52e695ec8c996b14a373
+  fingerprint: a4b378f40b7c73c192013e5adf60e2d057c262ca9ffe52e695ec8c996b14a373
+  sha1: sha256:3c1a9a1eb03015317a5db5fd2012df470ca6d5fa3a1ad4a2a85d844ba77cdc17
+  packages:
+  - golang-1.11-linux
+  - golang-1.11-linux-test
+  - golang-1.11-darwin-test
+- name: golang-1.11-test-windows
+  version: 9deb6a484e956b6d3cc6192c95ff7afa95c5bb5f52a845ecbdebb12e54f1d6eb
+  fingerprint: 9deb6a484e956b6d3cc6192c95ff7afa95c5bb5f52a845ecbdebb12e54f1d6eb
+  sha1: sha256:f0424aeba4d4e2269bca87d6c3ee22ff48737277821e8f13ca20d13e13fab74c
+  packages:
+  - golang-1.11-windows
+  - golang-1.11-windows-test
+- name: golang-1.12-test
+  version: af3ce8fb18db2630005f8157266170117aa19d06e14de0d39b8a24e1f0024a75
+  fingerprint: af3ce8fb18db2630005f8157266170117aa19d06e14de0d39b8a24e1f0024a75
+  sha1: sha256:750504f5ef2c94ca017d6c36c63baf2460f5ac519f75e1e693cece814fc55682
+  packages:
+  - golang-1.12-linux
+  - golang-1.12-linux-test
+  - golang-1.12-darwin-test
+- name: golang-1.12-test-windows
+  version: b18104c3679ee730887c14ec9b774d736d4917694a56126eb118bd22329e5c1c
+  fingerprint: b18104c3679ee730887c14ec9b774d736d4917694a56126eb118bd22329e5c1c
+  sha1: sha256:3f8c4b306255b5ce3bbcb31a35321e8af1b2b671cdde771154c5dcf2107367ee
+  packages:
+  - golang-1.12-windows
+  - golang-1.12-windows-test
+packages:
+- name: golang-1-darwin
+  version: bd9f31c1a563e9b65e9a89cb41cace05998b7f7e71d6225400dfce07bad36de7
+  fingerprint: bd9f31c1a563e9b65e9a89cb41cace05998b7f7e71d6225400dfce07bad36de7
+  sha1: sha256:214d98e60e52edc365b3867c6c6176bbc34353c3ca951c3482ef614e3ccecf8e
+  dependencies: []
+- name: golang-1-darwin-test
+  version: e93d4d7d8babb69c01a0ae02faf3aa09b77ef91f18fe05113ad28b7e69059a05
+  fingerprint: e93d4d7d8babb69c01a0ae02faf3aa09b77ef91f18fe05113ad28b7e69059a05
+  sha1: sha256:00565e910e34af7df10a5275cdbcfb8c62fb047bd555c1cbad14b99de8978136
+  dependencies:
+  - golang-1-darwin
+- name: golang-1-linux
+  version: a58647561918778c52fb932074e6099497a9063bce3a1531e5c60ba643e1f4df
+  fingerprint: a58647561918778c52fb932074e6099497a9063bce3a1531e5c60ba643e1f4df
+  sha1: sha256:c6a7f2d5741270ed0fe9582f2ff18902bc0be08bfc61fb682e46deff97368644
+  dependencies: []
+- name: golang-1-linux-test
+  version: 41464ce3b5e91de2853ce8a9227da4352577294aff9067652a3ef3d4a250270b
+  fingerprint: 41464ce3b5e91de2853ce8a9227da4352577294aff9067652a3ef3d4a250270b
+  sha1: sha256:76cbd3a85a084039c99886d90d91ba98d83ad072c4c3741df164702ec152740a
+  dependencies:
+  - golang-1-linux
+- name: golang-1-windows
+  version: e40c2867fa9a1471a95b912afbd37763a41099d0df5bcb6a6ad6d20ae768b253
+  fingerprint: e40c2867fa9a1471a95b912afbd37763a41099d0df5bcb6a6ad6d20ae768b253
+  sha1: sha256:61e826cd86cff756f46240987db9b248d15b8d2dd3512ac84658ea6699bc37cf
+  dependencies: []
+- name: golang-1-windows-test
+  version: 19503a75eea7380845e3ee4371a6239030b223da58ce4c324d6fe8752b278655
+  fingerprint: 19503a75eea7380845e3ee4371a6239030b223da58ce4c324d6fe8752b278655
+  sha1: sha256:bb889c5ebd3d1c85d2a250654522489097139045dad3cd5986b1a45ad8b626fa
+  dependencies:
+  - golang-1-windows
+- name: golang-1.11-darwin
+  version: 4c2c4cecc6284b471d9d6d0e85b782643c076a80fa042060d3ba338665cc5a59
+  fingerprint: 4c2c4cecc6284b471d9d6d0e85b782643c076a80fa042060d3ba338665cc5a59
+  sha1: sha256:485b18d080b79d88c7041cf3db5e0c6948219e857f5435fa7c2df45e7881c297
+  dependencies: []
+- name: golang-1.11-darwin-test
+  version: 5f3323e0cfc6b0d5c27965ff941f73eed4dca0fd70f1c2f59b66b5970f59071f
+  fingerprint: 5f3323e0cfc6b0d5c27965ff941f73eed4dca0fd70f1c2f59b66b5970f59071f
+  sha1: sha256:d09efa57ea948a7e2292d2fe29e595d95f035949dd4bec07db56fdb06dd5fb9d
+  dependencies:
+  - golang-1.11-darwin
+- name: golang-1.11-linux
+  version: a737692e0ea58e5f1c678f2b6294f0b09e8ee9c955a2873513323d64167ee8ee
+  fingerprint: a737692e0ea58e5f1c678f2b6294f0b09e8ee9c955a2873513323d64167ee8ee
+  sha1: sha256:594ec130a8bcdc310ad64a10c0c03303ad8174ff4b0bb4f0702ed8f534297ba7
+  dependencies: []
+- name: golang-1.11-linux-test
+  version: 3080d671934c9625e14a1cdf5dc99174931d6303b18ba98bfdab82506f03cea2
+  fingerprint: 3080d671934c9625e14a1cdf5dc99174931d6303b18ba98bfdab82506f03cea2
+  sha1: sha256:57332886c2ec382d90905dd6e32f3c5d14d6db03badaeb6ecf357cdcc07e3671
+  dependencies:
+  - golang-1.11-linux
+- name: golang-1.11-windows
+  version: 6393192be8bedde9d72c7710adcc08fb23818d8569d6a0c1eb1714546c897f4c
+  fingerprint: 6393192be8bedde9d72c7710adcc08fb23818d8569d6a0c1eb1714546c897f4c
+  sha1: sha256:c10e707d94c55ab234b444c4c55b2d804d0125ba8c5ee9e497290a3c172fa70a
+  dependencies: []
+- name: golang-1.11-windows-test
+  version: d12ccc616ba3c20bf3fa242717bc8d02ce89a13204827a23c385297be33561d9
+  fingerprint: d12ccc616ba3c20bf3fa242717bc8d02ce89a13204827a23c385297be33561d9
+  sha1: sha256:03dab99586f75e84f8d10ad19ce144f91301819535692a8a454550ddb68a718d
+  dependencies:
+  - golang-1.11-windows
+- name: golang-1.12-darwin
+  version: 4f68affb111571fa164a206bc46bca89014c80bf95dc547396a4e416997d4371
+  fingerprint: 4f68affb111571fa164a206bc46bca89014c80bf95dc547396a4e416997d4371
+  sha1: sha256:edf3494ea3bb4e3d6a8d52bc6613db5c5b60d916510dc510e525b93036950325
+  dependencies: []
+- name: golang-1.12-darwin-test
+  version: 7714047a67727828a5fe8337cf538ff49644f183fe843c3b227fb917ad789bd6
+  fingerprint: 7714047a67727828a5fe8337cf538ff49644f183fe843c3b227fb917ad789bd6
+  sha1: sha256:45b04e8348ff2147119389a343c6161aa672412057c4f5ba1012524d1e4ea23c
+  dependencies:
+  - golang-1.12-darwin
+- name: golang-1.12-linux
+  version: 2566cc8c8b3c0f3ccf6c832a6a4657a14f938197a70c2d2b6243be051439a395
+  fingerprint: 2566cc8c8b3c0f3ccf6c832a6a4657a14f938197a70c2d2b6243be051439a395
+  sha1: sha256:1707f9e1b46d6570e4efae54955101cd8e996fc9a2bd6cd50cfb215177eeabd3
+  dependencies: []
+- name: golang-1.12-linux-test
+  version: c7662e7ccd11ee4247d611ef91d976019c1b2a7bacb903ee8e00143562dacaff
+  fingerprint: c7662e7ccd11ee4247d611ef91d976019c1b2a7bacb903ee8e00143562dacaff
+  sha1: sha256:37688d25ad1a356eeeb873963d2d0e97ed8db43f8a32b133921d6759805fb3ab
+  dependencies:
+  - golang-1.12-linux
+- name: golang-1.12-windows
+  version: 228c9e2599d21021ffeb1ef165e6206a7d7a62eb077b9ca315518f8ebcf6a097
+  fingerprint: 228c9e2599d21021ffeb1ef165e6206a7d7a62eb077b9ca315518f8ebcf6a097
+  sha1: sha256:2114090503f0e59217f2e932433b58ba9a6d402b58af5296785c6b08787f43f0
+  dependencies: []
+- name: golang-1.12-windows-test
+  version: a2d4ec926f4d4fb30f150d92a193d902318854e7193dcba123f8c9fa30252a24
+  fingerprint: a2d4ec926f4d4fb30f150d92a193d902318854e7193dcba123f8c9fa30252a24
+  sha1: sha256:5de72c18632a852eb5640d29f6ed55ff1a2c90c14c7f9bb4ae18b6925c53d614
+  dependencies:
+  - golang-1.12-windows
+license:
+  version: 70774449f897cf766b941032580909f941852dbf78e0842b0c79715ecdcc481f
+  fingerprint: 70774449f897cf766b941032580909f941852dbf78e0842b0c79715ecdcc481f
+  sha1: sha256:0e256818f7ead2102641339f1a57399e4d4280cd02cbe06460bf5a96976e7535
