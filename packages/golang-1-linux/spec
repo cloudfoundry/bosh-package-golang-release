@@ -5,4 +5,4 @@ files:
 - 1/runtime.env.linux
 - 1/compile.env.linux
 - 1/compile.env.generic
-- go1.12*.linux-amd64.tar.gz
+- go1.13*.linux-amd64.tar.gz

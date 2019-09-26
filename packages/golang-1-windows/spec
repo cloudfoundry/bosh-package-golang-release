@@ -5,4 +5,4 @@ files:
 - 1/compile.env.windows
 - 1/runtime.env.windows
 - exiter.ps1
-- go1.12*.windows-amd64.zip
+- go1.13*.windows-amd64.zip
