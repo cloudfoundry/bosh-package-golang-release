@@ -45,4 +45,16 @@ go build ...
 
 ## Development
 
-To run tests `cd tests/ && BOSH_ENVIRONMENT=vbox ./run.sh -wl`
+To run tests `cd tests/ && BOSH_ENVIRONMENT=vbox ./run.sh`
+
+### Windows
+
+You will need to set the following variables, for example:
+
+```
+export STEMCELL_PATH="/path/to/windows/stemcell.zip"
+export STEMCELL_VERSION="<version>"
+export OS="windows2019"
+export JOB_NAME="test-windows"
+export VM_EXTENSIONS="[50GB_ephemeral_disk]"
+```
