@@ -9,9 +9,6 @@ start-bosh
 
 source /tmp/local-bosh/director/env
 
-curl -Lo /usr/local/bin/jq https://github.com/stedolan/jq/releases/download/jq-1.5/jq-linux64
-chmod +x /usr/local/bin/jq
-
 export STEMCELL_PATH="stemcell/stemcell.tgz"
 export STEMCELL_VERSION=$(cat stemcell/version)
 
