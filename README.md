@@ -40,7 +40,7 @@ or on Windows:
 
 ```powershell
 . C:\var\vcap\packages\golang-1.13-windows\bosh\runtime.ps1
-go build ...
+go run ...
 ```
 
 ## Development
