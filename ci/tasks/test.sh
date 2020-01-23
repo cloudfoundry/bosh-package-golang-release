@@ -5,7 +5,7 @@ set -eux
 script_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 build_dir="${script_dir}/../../.."
 
-"${build_dir}/bosh-src/ci/docker/main-bosh-docker/start-bosh.sh"
+start-bosh
 
 source /tmp/local-bosh/director/env
 

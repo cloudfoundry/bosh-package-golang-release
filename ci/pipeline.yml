@@ -12,7 +12,6 @@ jobs:
   - in_parallel:
     - get: golang-release
       trigger: true
-    - get: bosh-src
     - get: stemcell
       trigger: true
   - task: test
@@ -28,7 +27,6 @@ jobs:
     - get: golang-1.13
       trigger: true
     - get: golang-release
-    - get: bosh-src
     - get: stemcell
     - get: semver
       params:
@@ -56,12 +54,6 @@ jobs:
         annotate: version-tag/annotate-msg
 
 resources:
-- name: bosh-src
-  type: git
-  source:
-    uri: https://github.com/cloudfoundry/bosh.git
-    branch: master
-
 - name: golang-release
   type: git
   source:
