@@ -1,24 +1,24 @@
-go1.11.10.darwin-amd64.tar.gz:
-  size: 120496384
-  object_id: 03a41e77-23b2-47c8-4a9b-3f799a6ab9d1
-  sha: sha256:194d7ce2b88a791147be64860f21bac8eeec8f372c9e9caab6c72c3bd525a039
-go1.11.10.linux-amd64.tar.gz:
-  size: 121074848
-  object_id: 6765c668-6d66-4569-4e6d-0ca6d6f1de29
-  sha: sha256:aefaa228b68641e266d1f23f1d95dba33f17552ba132878b65bb798ffa37e6d0
-go1.11.10.windows-amd64.zip:
-  size: 133217873
-  object_id: 2c27db30-7752-428e-60e7-566f4afd690c
-  sha: sha256:e0354b5cef18dbf5867fff022ed4264c441df504f3cb86c90d8b987eca336f78
-go1.12.5.darwin-amd64.tar.gz:
-  size: 127612395
-  object_id: 41e61fe9-35b9-46f3-45e4-99366926e66c
-  sha: sha256:566d0b407f7d4aa5a1315988b562bbe4e9422a93ce2fbf27a664cddcb9a3e617
-go1.12.5.linux-amd64.tar.gz:
-  size: 127938445
-  object_id: 51e27112-6754-45cc-4bc6-5a3e8a86b6b3
-  sha: sha256:aea86e3c73495f205929cfebba0d63f1382c8ac59be081b6351681415f4063cf
-go1.12.5.windows-amd64.zip:
-  size: 141300257
-  object_id: 2d867fa7-8fbc-4393-7307-9cb45931f61d
-  sha: sha256:ccb694279aab39fe0e70629261f13b0307ee40d2d5e1138ed94738023ab04baa
+go1.12.15.darwin-amd64.tar.gz:
+  size: 127048051
+  object_id: 6f190569-1a66-4f97-506a-3163e56aa0ae
+  sha: sha256:3a7afb588f3783545abb514d1d67ca27d33fb99ace69ff09880c2e76a0875d6e
+go1.12.15.linux-amd64.tar.gz:
+  size: 126728140
+  object_id: b004fabc-ef00-41e9-5a6d-6b43096f1bc2
+  sha: sha256:61068419f3d3fcd3cc415c352c4a93d6ae0e723ac18a22ac572b4904d78b5a4c
+go1.12.15.windows-amd64.zip:
+  size: 140311079
+  object_id: 23a656f2-d44c-4a34-5478-da66cd459e54
+  sha: sha256:80e7a471bef2a05d4729b38762b4534523ac4779c7b32d48ac85eaa490c111a5
+go1.13.6.darwin-amd64.tar.gz:
+  size: 121519126
+  object_id: acd50617-e5c9-4942-4b4f-e0154f30f512
+  sha: sha256:1ee0dc6a7abf389dac898cbe27e28c4388a61e45cba2632c01d749e25003007f
+go1.13.6.linux-amd64.tar.gz:
+  size: 120081829
+  object_id: f19b24f3-d053-44d7-7166-10a58184e922
+  sha: sha256:a1bc06deb070155c4f67c579f896a45eeda5a8fa54f35ba233304074c4abbbbd
+go1.13.6.windows-amd64.zip:
+  size: 134202876
+  object_id: dc4feec0-aa06-4c2c-4dd9-4fa71597c5fa
+  sha: sha256:66eae07e03310b67d279701028ba8dc6948cd0acdc6fbe21c22bfa9a2bc48884

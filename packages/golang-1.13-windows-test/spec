@@ -1,0 +1,9 @@
+---
+name: golang-1.13-windows-test
+
+dependencies:
+- golang-1.13-windows
+
+files:
+- test.go
+- exiter.ps1
