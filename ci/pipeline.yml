@@ -2,22 +2,9 @@
 groups:
 - name: golang-release
   jobs:
-  - test
   - bump
 
 jobs:
-- name: test
-  serial: true
-  plan:
-  - in_parallel:
-    - get: golang-release
-      trigger: true
-    - get: stemcell
-      trigger: true
-  - task: test
-    privileged: true
-    file: golang-release/ci/tasks/test.yml
-
 - name: bump
   serial: true
   plan:
