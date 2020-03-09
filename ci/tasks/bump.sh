@@ -16,12 +16,12 @@ set -x
 git config user.name "CI Bot"
 git config user.email "cf-bosh-eng@pivotal.io"
 
-replace_if_necessary 1.12 linux
-replace_if_necessary 1.12 darwin
-replace_if_necessary 1.12 windows
+replace_if_necessary 1.14 linux
+replace_if_necessary 1.14 darwin
+replace_if_necessary 1.14 windows
 
 if [[ "$( git status --porcelain )" != "" ]]; then
-  git commit -am "Bump golang 1.12" -m "$(cd ../golang-1.12 && ls)"
+  git commit -am "Bump golang 1.14" -m "$(cd ../golang-1.14 && ls)"
 fi
 
 replace_if_necessary 1.13 linux
