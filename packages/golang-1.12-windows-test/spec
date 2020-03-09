@@ -1,9 +1,0 @@
----
-name: golang-1.12-windows-test
-
-dependencies:
-- golang-1.12-windows
-
-files:
-- test.go
-- exiter.ps1
