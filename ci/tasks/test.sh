@@ -5,7 +5,7 @@ set -eux
 script_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 build_dir="${script_dir}/../../.."
 
-start-bosh
+source start-bosh
 
 source /tmp/local-bosh/director/env
 
