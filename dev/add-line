@@ -39,7 +39,13 @@ find ci -type file -print0 | xargs -0 sed -i "" "s/${old}/${new}/g"
 # test
 find tests manifests -type file -print0 | xargs -0 sed -i "" "s/${old}/${new}/g"
 
+# README
+if grep ${old} README.md; then
+    sed -i "" "s/${last}/${new}/g" README.md
+    sed -i "" "s/${old}/${last}/g" README.md
+fi
+
 echo "added ${new}, removed ${old}"
 echo "please commit changes and push"
-echo "when pushed run `./ci/configure.sh` to update pipeline"
+echo "when pushed run ./ci/configure.sh to update pipeline"
 echo "the pipeline will add the required blobs"
