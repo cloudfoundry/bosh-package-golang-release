@@ -47,6 +47,11 @@ go run ...
 
 To run tests `cd tests/ && BOSH_ENVIRONMENT=vbox ./run.sh`
 
+## Adding a new golang line
+
+To add a new line, edit the variable in the top of `dev/add-line`
+Execute the script, commit changes, and update the pipeline.
+
 ### Windows
 
 You will need to set the following variables, for example:

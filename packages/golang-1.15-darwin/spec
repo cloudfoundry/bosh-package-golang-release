@@ -1,0 +1,7 @@
+---
+name: golang-1.15-darwin
+
+files:
+- 1.15/compile.env.darwin
+- 1.15/compile.env.generic
+- go1.15*.darwin-amd64.tar.gz

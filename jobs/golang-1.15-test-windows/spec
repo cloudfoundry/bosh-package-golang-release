@@ -1,0 +1,11 @@
+---
+name: golang-1.15-test-windows
+
+templates:
+  run.ps1: bin/run.ps1
+
+packages:
+- golang-1.15-windows
+- golang-1.15-windows-test
+
+properties: {}
