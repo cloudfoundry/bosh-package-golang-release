@@ -22,6 +22,7 @@ find packages/*-1-* -type file -print0 | xargs -0 sed -i "" "s/${last}/${new}/g"
 # jobs
 for dir in test test-windows; do
     cp -fr jobs/golang-{${last},${new}}-${dir}/
+    rm -fr jobs/golang-${old}-${dir}/
 done
 
 find jobs/*-${new}-* -type file -print0 | xargs -0 sed -i "" "s/${last}/${new}/g"
@@ -34,6 +35,9 @@ done
 
 # ci
 find ci -type file -print0 | xargs -0 sed -i "" "s/${old}/${new}/g"
+
+# test
+find tests manifests -type file -print0 | xargs -0 sed -i "" "s/${old}/${new}/g"
 
 echo "added ${new}, removed ${old}"
 echo "please commit changes and push"
