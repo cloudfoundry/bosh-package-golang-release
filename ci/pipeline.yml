@@ -11,7 +11,7 @@ jobs:
   - in_parallel:
     - get: golang-1.15
       trigger: true
-    - get: golang-1.14
+    - get: golang-1.16
       trigger: true
     - get: golang-release
     - get: stemcell
@@ -62,10 +62,10 @@ resources:
     access_key_id: ((s3_aws_access_key_id))
     secret_access_key: ((s3_aws_secret_access_key))
 
-- name: golang-1.14
+- name: golang-1.16
   type: dynamic-metalink
   source:
-    version: 1.14.x
+    version: 1.16.x
     version_check: |
       curl -s https://golang.org/dl/?mode=json | jq -r '.[].version[2:]'
     metalink_get: |

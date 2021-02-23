@@ -1,0 +1,8 @@
+---
+name: golang-1.16-linux
+
+files:
+- 1.16/runtime.env.linux
+- 1.16/compile.env.linux
+- 1.16/compile.env.generic
+- go1.16*.linux-amd64.tar.gz

@@ -1,8 +1,0 @@
----
-name: golang-1.14-linux
-
-files:
-- 1.14/runtime.env.linux
-- 1.14/compile.env.linux
-- 1.14/compile.env.generic
-- go1.14*.linux-amd64.tar.gz
