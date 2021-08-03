@@ -12,7 +12,7 @@ source /tmp/local-bosh/director/env
 export STEMCELL_PATH="$build_dir/stemcell/stemcell.tgz"
 export STEMCELL_VERSION=$(cat stemcell/version)
 
-export OS="ubuntu-xenial"
+export OS="ubuntu-bionic"
 export JOB_NAME="test"
 export VM_EXTENSIONS="[]"
 
