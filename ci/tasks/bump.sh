@@ -24,10 +24,10 @@ if [[ "$( git status --porcelain )" != "" ]]; then
   git commit -am "Bump golang 1.16" -m "$(cd ../golang-1.16 && ls)"
 fi
 
-replace_if_necessary 1.15 linux
-replace_if_necessary 1.15 darwin
-replace_if_necessary 1.15 windows
+replace_if_necessary 1.17 linux
+replace_if_necessary 1.17 darwin
+replace_if_necessary 1.17 windows
 
 if [[ "$( git status --porcelain )" != "" ]]; then
-  git commit -am "Bump golang 1.15" -m "$(cd ../golang-1.15 && ls)"
+  git commit -am "Bump golang 1.17" -m "$(cd ../golang-1.17 && ls)"
 fi

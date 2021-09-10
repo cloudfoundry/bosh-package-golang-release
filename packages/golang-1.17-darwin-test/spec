@@ -1,0 +1,8 @@
+---
+name: golang-1.17-darwin-test
+
+dependencies:
+- golang-1.17-darwin
+
+files:
+- test.go

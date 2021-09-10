@@ -1,15 +1,3 @@
-go1.15.15.darwin-amd64.tar.gz:
-  size: 122412248
-  object_id: e6588754-8fed-4245-5aff-bcd18962f4d9
-  sha: sha256:2f4c119524450ee94062a1ce7112fb88ce0fe4bb0303a302e002183a550c25c2
-go1.15.15.linux-amd64.tar.gz:
-  size: 121104410
-  object_id: 6c49074c-bd96-48f0-6296-362f5801163c
-  sha: sha256:0885cf046a9f099e260d98d9ec5d19ea9328f34c8dc4956e1d3cd87daaddb345
-go1.15.15.windows-amd64.zip:
-  size: 139064376
-  object_id: d3c097f6-ed52-47a7-75e2-d8ed2dec8e9c
-  sha: sha256:7df7bf948dcc8ec0a3902e3301d17cbb5c2ebb01297d686ee2302e41f4ac6e10
 go1.16.7.darwin-amd64.tar.gz:
   size: 130203260
   object_id: df86e815-d0ea-4381-5860-15d9d5d2b8b1
