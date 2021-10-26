@@ -1,7 +1,7 @@
 function replace_if_necessary() {
   version=$1
   platform=$2
-  is_latest=$3
+  is_latest=${3:-0}
   blobname=$(basename $(ls ../golang-${version}/*${platform}*))
 
   cp ../golang-${version}/.resource/version ./packages/golang-${version}-${platform}/
