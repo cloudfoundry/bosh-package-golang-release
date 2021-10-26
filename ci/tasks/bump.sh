@@ -21,13 +21,13 @@ replace_if_necessary 1.16 darwin
 replace_if_necessary 1.16 windows
 
 if [[ "$( git status --porcelain )" != "" ]]; then
-  git commit -am "Bump golang 1.16" -m "$(cd ../golang-1.16 && ls)"
+  git commit -am "Bump to golang $(cat ../golang-1.16/.resource/version)" -m "$(cd ../golang-1.16 && ls)"
 fi
 
-replace_if_necessary 1.17 linux
-replace_if_necessary 1.17 darwin
-replace_if_necessary 1.17 windows
+replace_if_necessary 1.17 linux true
+replace_if_necessary 1.17 darwin true
+replace_if_necessary 1.17 windows true
 
 if [[ "$( git status --porcelain )" != "" ]]; then
-  git commit -am "Bump golang 1.17" -m "$(cd ../golang-1.17 && ls)"
+  git commit -am "Bump to golang $(cat ../golang-1.17/.resource/version)" -m "$(cd ../golang-1.17 && ls)"
 fi
