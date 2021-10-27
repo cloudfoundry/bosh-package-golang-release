@@ -13,7 +13,7 @@ outputs:
 - name: output_repo
 
 run:
-  path: bosh-cpi-src-in/ci/tasks/bump-golang-package.sh
+  path: golang-release/ci/tasks/shared/bump-golang-package.sh
 
 params:
   GIT_USER_NAME: CI Bot

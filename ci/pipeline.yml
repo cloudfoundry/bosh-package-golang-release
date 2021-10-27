@@ -1,9 +1,4 @@
 ---
-groups:
-- name: golang-release
-  jobs:
-  - bump
-
 jobs:
 - name: bump
   serial: true
