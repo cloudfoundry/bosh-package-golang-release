@@ -5,4 +5,5 @@ COPY --from=bosh/bosh-ecosystem-concourse:latest /usr/local/bin/bosh /usr/local/
 RUN apt-get update && \
     apt-get install -y \
         curl \
+        git \
         jq
