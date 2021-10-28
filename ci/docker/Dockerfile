@@ -8,7 +8,6 @@ RUN apt-get update && \
         git \
         jq
 
-ADD ci/docker/entry.sh /usr/local/bin/entry.sh
 ADD . /tmp/release
 
 RUN cd /tmp/release && \
