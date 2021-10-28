@@ -41,7 +41,8 @@ jobs:
     trigger: true
   - put: golang-release-image
     params:
-      build: "golang-release/ci/docker"
+      build: "golang-release"
+      dockerfile: "golang-release/ci/docker/Dockerfile"
     get_params:
       skip_download: true
 
