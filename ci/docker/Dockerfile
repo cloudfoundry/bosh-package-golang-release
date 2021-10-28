@@ -28,4 +28,8 @@ RUN cd /tmp/release && \
     done && \
     rm -r /tmp/release /tmp/workspace
 
-ENTRYPOINT ["/usr/local/bin/entry.sh"]
+# Default Golang environment to golang-1-linux. These values are pulled from the
+# src/1/compile.env.linux environment file.
+ENV GOROOT "/var/vcap/packages/golang-1-linux"
+ENV GOCACHE "/var/vcap/data/golang-1-linux/cache"
+ENV PATH "$GOROOT/bin:$PATH"
