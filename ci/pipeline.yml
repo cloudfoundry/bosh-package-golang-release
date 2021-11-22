@@ -82,9 +82,9 @@ resources:
   source:
     version: 1.16.x
     version_check: |
-      curl -s https://golang.org/dl/?mode=json | jq -r '.[].version[2:]'
+      curl -s https://go.dev/dl/?mode=json | jq -r '.[].version[2:]'
     metalink_get: |
-      curl -s https://golang.org/dl/?mode=json | jq '
+      curl -s https://go.dev/dl/?mode=json | jq '
         map(select(.version[2:] == env.version)) | map({
           "files": (.files | map({
             "name": .filename,
@@ -101,9 +101,9 @@ resources:
   source:
     version: 1.17.x
     version_check: |
-      curl -s https://golang.org/dl/?mode=json | jq -r '.[].version[2:]'
+      curl -s https://go.dev/dl/?mode=json | jq -r '.[].version[2:]'
     metalink_get: |
-      curl -s https://golang.org/dl/?mode=json | jq '
+      curl -s https://go.dev/dl/?mode=json | jq '
         map(select(.version[2:] == env.version)) | map({
           "files": (.files | map({
             "name": .filename,
