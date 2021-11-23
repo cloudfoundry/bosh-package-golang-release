@@ -10,7 +10,7 @@ git config --global user.email $GIT_USER_EMAIL
 
 git clone input_repo "$repo_output"
 
-cd "$repo_output"
+cd "$repo_output/$RELEASE_DIR"
 
 echo "$PRIVATE_YML" > config/private.yml
 

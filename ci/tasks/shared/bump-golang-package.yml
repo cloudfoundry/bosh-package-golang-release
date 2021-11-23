@@ -20,3 +20,4 @@ params:
   GIT_USER_EMAIL: bots@cloudfoundry.org
   PACKAGES:
   PRIVATE_YML:
+  RELEASE_DIR:
