@@ -8,6 +8,8 @@ cd output_repo/$SOURCE_PATH
 
 if [ ! -z "$GO_PACKAGE" ]; then
   source /var/vcap/packages/$GO_PACKAGE/bosh/compile.env
+  # Since we are using Go modules, the GOPATH is not needed and actually conflicts with using modules
+  unset GOPATH
 fi
 
 #intentionally cause an explicit commit if the underlying go version in our compiled Dockerfile changes.
