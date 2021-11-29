@@ -6,7 +6,7 @@ git clone input_repo output_repo
 
 cd output_repo/$SOURCE_PATH
 
-if [ -z "$GO_PACKAGE" ]; then
+if [ ! -z "$GO_PACKAGE" ]; then
   source /var/vcap/packages/$GO_PACKAGE/bosh/compile.env
 fi
 
