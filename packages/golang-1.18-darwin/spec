@@ -1,0 +1,7 @@
+---
+name: golang-1.18-darwin
+
+files:
+- 1.18/compile.env.darwin
+- 1.18/compile.env.generic
+- go1.18*.darwin-amd64.tar.gz

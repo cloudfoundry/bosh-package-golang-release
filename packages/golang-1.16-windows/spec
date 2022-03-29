@@ -1,8 +1,0 @@
----
-name: golang-1.16-windows
-
-files:
-- 1.16/compile.env.windows
-- 1.16/runtime.env.windows
-- exiter.ps1
-- go1.16*.windows-amd64.zip

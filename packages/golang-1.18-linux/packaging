@@ -1,0 +1,10 @@
+set -e -x -u
+
+tar xzf go*.linux-amd64.tar.gz
+
+cp -R go/* ${BOSH_INSTALL_TARGET}
+
+mkdir ${BOSH_INSTALL_TARGET}/bosh
+cp 1.18/runtime.env.linux   ${BOSH_INSTALL_TARGET}/bosh/runtime.env
+cp 1.18/compile.env.linux   ${BOSH_INSTALL_TARGET}/bosh/compile.env
+cp 1.18/compile.env.generic ${BOSH_INSTALL_TARGET}/bosh/compile.env.generic

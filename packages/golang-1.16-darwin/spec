@@ -1,7 +1,0 @@
----
-name: golang-1.16-darwin
-
-files:
-- 1.16/compile.env.darwin
-- 1.16/compile.env.generic
-- go1.16*.darwin-amd64.tar.gz
