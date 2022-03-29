@@ -52,7 +52,7 @@ To run tests `cd tests/ && BOSH_ENVIRONMENT=vbox ./run.sh`
 To add a new line, edit the variable in the top of `dev/add-line`
 Execute the script, commit changes, and update the pipeline.
 
-The blobs necessary for the new version line will automatically be added via CI.
+The blobs necessary for the new version line will automatically be added via CI. The `build-docker-image` job will fail until the blobs are added by the `bump` job.
 
 ### Windows
 
