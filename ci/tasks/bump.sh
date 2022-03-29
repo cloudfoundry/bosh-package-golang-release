@@ -2,8 +2,22 @@
 
 set -eux
 
-script_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-source ${script_dir}/bump-helpers.sh
+function replace_if_necessary() {
+  version=$1
+  platform=$2
+  blobname=$(basename $(ls ../golang-${version}/*${platform}*))
+
+  cp ../golang-${version}/.resource/version ./packages/golang-${version}-${platform}/
+
+  if ! bosh blobs | grep -q ${blobname}; then
+    existing_blob=$(bosh blobs | awk '{print $1}' | grep "go${version}.*${platform}" || true)
+    if [ -n "${existing_blob}" ]; then
+      bosh remove-blob ${existing_blob}
+    fi
+    bosh add-blob --sha2 ../golang-${version}/${blobname} ${blobname}
+    bosh upload-blobs
+  fi
+}
 
 cd bumped-golang-release
 
@@ -20,31 +34,26 @@ git config user.email "cf-bosh-eng@pivotal.io"
 # new version being added. This means that the two versions may swap orders within
 # this script.
 #
-# Thus we need to determine whether the "first" or "second" version is the latest
-# version, which we need to know in order to properly set the version for the
-# golang-1-{PLATFORM} package.
-first_version="1.18"
-second_version="1.17"
-if [[ "$first_version" < "$second_version" ]]; then
-  first_version_is_latest=false
-  second_version_is_latest=true
-else
-  first_version_is_latest=true
-  second_version_is_latest=false
-fi
+# Thus we need to determine which version is the latest version, in order to properly
+# set the version for the golang-1-{PLATFORM} packages.
+declared_versions=("1.18" "1.17")
+IFS=$'\n' versions=($(sort <<< "${declared_versions[*]}"))
+unset IFS
 
-replace_if_necessary $first_version linux $first_version_is_latest
-replace_if_necessary $first_version darwin $first_version_is_latest
-replace_if_necessary $first_version windows $first_version_is_latest
+latest_version="${versions[-1]}"
 
-if [[ "$( git status --porcelain )" != "" ]]; then
-  git commit -am "Bump to golang $(cat ../golang-$first_version/.resource/version)" -m "$(cd ../golang-$first_version && ls)"
-fi
+platforms=(linux darwin windows)
 
-replace_if_necessary $second_version linux $second_version_is_latest
-replace_if_necessary $second_version darwin $second_version_is_latest
-replace_if_necessary $second_version windows $second_version_is_latest
+for version in ${versions[*]}; do
+  for platform in ${platforms[*]}; do
+    replace_if_necessary $version $platform
 
-if [[ "$( git status --porcelain )" != "" ]]; then
-  git commit -am "Bump to golang $(cat ../golang-$second_version/.resource/version)" -m "$(cd ../golang-$second_version && ls)"
-fi
+    if [[ "$version" == "$latest_version" ]]; then
+      cp "../golang-${version}/.resource/version" "./packages/golang-1-${platform}/"
+    fi
+  done
+
+  if [[ "$( git status --porcelain )" != "" ]]; then
+    git commit -am "Bump to golang $(cat ../golang-$version/.resource/version)" -m "$(cd ../golang-$version && ls)"
+  fi
+done
