@@ -14,7 +14,7 @@ fi
 
 #intentionally cause an explicit commit if the underlying go version in our compiled Dockerfile changes.
 #assume the go-dep-bumper and bosh-utils are bumping at the same cadence.
-NEW_GO_MINOR=$(go version | sed 's/go version go1\.\([0-9]\+\)\..*$/\1/g')
+NEW_GO_MINOR=$(go version | sed 's/go version go1\.\([0-9]\+\)[. ].*$/\1/g')
 CURRENT_GO_MINOR=$(cat go.mod | grep -E "^go 1.*" | sed "s/^\(go 1.\)\([0-9]\+\)/\2/")
 
 go mod edit -go=1.$NEW_GO_MINOR
