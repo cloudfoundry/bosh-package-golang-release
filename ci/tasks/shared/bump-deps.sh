@@ -30,7 +30,8 @@ go mod vendor
 
 if [ "$(git status --porcelain)" != "" ]; then
   git status
-  git add vendor go.sum go.mod
+  git add go.mod
+  [ -f go.sum ] && git add vendor go.sum
   git config user.name $GIT_USER_NAME
   git config user.email $GIT_USER_EMAIL
   if [ $CURRENT_GO_MINOR == $NEW_GO_MINOR ]; then
