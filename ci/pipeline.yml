@@ -103,7 +103,7 @@ resources:
     version_check: |
       curl -s https://go.dev/dl/\?mode\=json\&include\=all | jq -r '[.[] | select(.version | startswith("go1.17"))][0].version[2:]'
     metalink_get: |
-      curl -s https://go.dev/dl/?mode=json | jq '
+      curl -s https://go.dev/dl/?mode=json\&include\=all | jq '
         map(select(.version[2:] == env.version)) | map({
           "files": (.files | map({
             "name": .filename,
