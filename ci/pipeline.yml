@@ -101,7 +101,7 @@ resources:
   source:
     version: 1.17.x
     version_check: |
-      curl -s https://go.dev/dl/?mode=json | jq -r '.[].version[2:]'
+      curl -s https://go.dev/dl/?mode=json&include=all | jq -r '.[].version[2:]'
     metalink_get: |
       curl -s https://go.dev/dl/?mode=json | jq '
         map(select(.version[2:] == env.version)) | map({
