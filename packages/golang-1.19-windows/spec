@@ -1,0 +1,8 @@
+---
+name: golang-1.19-windows
+
+files:
+- 1.19/compile.env.windows
+- 1.19/runtime.env.windows
+- exiter.ps1
+- go1.19*.windows-amd64.zip

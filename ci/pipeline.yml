@@ -4,7 +4,7 @@ jobs:
   serial: true
   plan:
   - in_parallel:
-    - get: golang-1.17
+    - get: golang-1.19
       trigger: true
     - get: golang-1.18
       trigger: true
@@ -96,14 +96,14 @@ resources:
     - go*.windows-amd64.zip
     - go*.darwin-amd64.tar.gz
 
-- name: golang-1.17
+- name: golang-1.19
   type: dynamic-metalink
   source:
-    version: 1.17.x
+    version: 1.19.x
     version_check: |
-      curl -s https://go.dev/dl/\?mode\=json\&include\=all | jq -r '[.[] | select(.version | startswith("go1.17"))][0].version[2:]'
+      curl -s https://go.dev/dl/?mode=json | jq -r '.[].version[2:]'
     metalink_get: |
-      curl -s https://go.dev/dl/?mode=json\&include\=all | jq '
+      curl -s https://go.dev/dl/?mode=json | jq '
         map(select(.version[2:] == env.version)) | map({
           "files": (.files | map({
             "name": .filename,

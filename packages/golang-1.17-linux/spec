@@ -1,8 +1,0 @@
----
-name: golang-1.17-linux
-
-files:
-- 1.17/runtime.env.linux
-- 1.17/compile.env.linux
-- 1.17/compile.env.generic
-- go1.17*.linux-amd64.tar.gz

@@ -1,0 +1,7 @@
+---
+name: golang-1.19-darwin
+
+files:
+- 1.19/compile.env.darwin
+- 1.19/compile.env.generic
+- go1.19*.darwin-amd64.tar.gz
