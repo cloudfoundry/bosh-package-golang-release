@@ -20,6 +20,11 @@ CURRENT_GO_MINOR=$(cat go.mod | grep -E "^go 1.*" | sed "s/^\(go 1.\)\([0-9]\+\)
 go mod edit -go=1.$NEW_GO_MINOR
 
 go get -u ./...
+
+if [ -d ./tools ]; then
+  go get -u ./tools
+fi
+
 if [ $CURRENT_GO_MINOR == $NEW_GO_MINOR ]; then
   go mod tidy
 else
