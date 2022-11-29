@@ -42,7 +42,12 @@ jobs:
   - put: golang-release-image
     params:
       build: "golang-release"
-      dockerfile: "golang-release/ci/docker/Dockerfile"
+      dockerfile: "golang-release/ci/docker/golang-release/Dockerfile"
+    get_params:
+      skip_download: true
+  - put: golang-release-security-scanner-image
+    params:
+      dockerfile: "golang-release/ci/docker/golang-release-security-scanner/Dockerfile"
     get_params:
       skip_download: true
 
@@ -59,7 +64,13 @@ resources:
   type: docker-image
   source:
     repository: bosh/golang-release
-    email: cf-bosh-eng@pivotal.io
+    username: ((docker.username))
+    password: ((docker.password))
+
+- name: golang-release-security-scanner-image
+  type: docker-image
+  source:
+    repository: bosh/golang-release-security-scanner
     username: ((docker.username))
     password: ((docker.password))
 
