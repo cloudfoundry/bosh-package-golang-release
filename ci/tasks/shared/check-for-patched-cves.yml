@@ -1,0 +1,22 @@
+---
+platform: linux
+
+image_resource:
+  type: docker-image
+  source:
+    repository: bosh/golang-release-security-scanner
+
+inputs:
+- name: input_repo
+- name: version
+- name: golang-release
+
+outputs:
+- name: patched_cves
+
+run:
+  path: golang-release/ci/tasks/shared/check-for-patched-cves.sh
+
+params:
+  SEVERITY: CRITICAL,HIGH,MEDIUM,LOW,UNKNOWN
+  SOURCE_PATH:
