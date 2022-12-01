@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-set -eu
+set -euo pipefail
 
 version_number="$(cat version/version)"
 
@@ -19,6 +19,9 @@ popd
 patched_cves="$(comm -13 <(echo "$current_list") <(echo "$previous_list"))"
 
 if [ -z "$patched_cves" ]; then
+  echo "" > patched_cves/patched-cves.txt
+  echo "{}" > patched_cves/patched-cves.json
+  echo "" > patched_cves/release-notes.md
   echo "No fixed CVEs detected"
   exit 1
 fi
