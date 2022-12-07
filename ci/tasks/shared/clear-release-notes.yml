@@ -1,0 +1,18 @@
+---
+platform: linux
+
+image_resource:
+  type: docker-image
+  source:
+    repository: alpine
+
+outputs:
+- name: release-notes
+
+run:
+  path: sh
+  args:
+  - -exc
+  - touch release-notes/release-notes.md
+
+params:
