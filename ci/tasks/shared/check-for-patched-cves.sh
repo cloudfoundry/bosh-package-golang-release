@@ -33,9 +33,12 @@ done
 cve_ids="${cve_ids:1}"
 
 patched_json="$(echo "$previous_json" | jq "map(select(.VulnerabilityID == ($cve_ids)))")"
-release_notes="$(echo "$patched_json" | jq -r "map(\"* \" + .VulnerabilityID + \": \" + if .Title then .Title else .Description end) | sort | join(\"\n\")")"
+release_notes="
+### Fixed CVEs:
 
-echo "Fixed CVEs:"
+$(echo "$patched_json" | jq -r "map(\"* \" + .VulnerabilityID + \": \" + if .Title then .Title else .Description end) | sort | join(\"\n\")")
+"
+
 echo "$release_notes"
 
 echo "$patched_cves" > patched_cves/patched-cves.txt
