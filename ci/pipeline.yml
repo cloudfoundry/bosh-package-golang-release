@@ -16,14 +16,24 @@ jobs:
   - task: bump
     file: golang-release/ci/tasks/bump.yml
     params:
-      PRIVATE_YML: ((s3_private_yml))
+      PRIVATE_YML: |
+        ---
+        blobstore:
+          options:
+            access_key_id: ((bosh-packages-golang-release-uploader_aws_access_key.username))
+            secret_access_key: ((bosh-packages-golang-release-uploader_aws_access_key.password))
   - task: test
     privileged: true
     file: golang-release/ci/tasks/test.yml
   - task: finalize
     file: golang-release/ci/tasks/finalize.yml
     params:
-      PRIVATE_YML: ((s3_private_yml))
+      PRIVATE_YML: |
+        ---
+        blobstore:
+          options:
+            access_key_id: ((bosh-packages-golang-release-uploader_aws_access_key.username))
+            secret_access_key: ((bosh-packages-golang-release-uploader_aws_access_key.password))
   - in_parallel:
     - put: semver
       params:
@@ -86,8 +96,8 @@ resources:
     bucket: bosh-packages-golang-release
     key: version
     initial_version: 0.8.0
-    access_key_id: ((s3_aws_access_key_id))
-    secret_access_key: ((s3_aws_secret_access_key))
+    access_key_id: ((bosh-packages-golang-release-uploader_aws_access_key.username))
+    secret_access_key: ((bosh-packages-golang-release-uploader_aws_access_key.password))
 
 - name: golang-1.18
   type: dynamic-metalink
