@@ -69,7 +69,7 @@ resources:
   source:
     uri: git@github.com:bosh-packages/golang-release
     branch: master
-    private_key: ((github_deploy_key))
+    private_key: ((github_deploy_key_golang-release.private_key))
 
 - name: golang-release-image
   type: docker-image
