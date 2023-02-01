@@ -7,6 +7,5 @@ cp -R go/* ${BOSH_INSTALL_TARGET}
 mkdir ${BOSH_INSTALL_TARGET}/bosh
 
 export PACKAGE_NAME="$(basename ${BOSH_INSTALL_TARGET})"
-sed "s#\${PACKAGE_NAME}#${PACKAGE_NAME}#" 1.18/runtime.env.linux   > "${BOSH_INSTALL_TARGET}/bosh/runtime.env"
-sed "s#\${PACKAGE_NAME}#${PACKAGE_NAME}#" 1.18/compile.env.linux   > "${BOSH_INSTALL_TARGET}/bosh/compile.env"
-sed "s#\${PACKAGE_NAME}#${PACKAGE_NAME}#" 1.18/compile.env.generic > "${BOSH_INSTALL_TARGET}/bosh/compile.env.generic"
+sed "s#\${PACKAGE_NAME}#${PACKAGE_NAME}#" compile.env.unix > "${BOSH_INSTALL_TARGET}/bosh/compile.env"
+sed "s#\${PACKAGE_NAME}#${PACKAGE_NAME}#" runtime.env.unix > "${BOSH_INSTALL_TARGET}/bosh/runtime.env"
