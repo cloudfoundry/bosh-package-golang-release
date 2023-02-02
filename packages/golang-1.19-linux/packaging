@@ -5,6 +5,7 @@ tar xzf go*.linux-amd64.tar.gz
 cp -R go/* ${BOSH_INSTALL_TARGET}
 
 mkdir ${BOSH_INSTALL_TARGET}/bosh
-cp 1.19/runtime.env.linux   ${BOSH_INSTALL_TARGET}/bosh/runtime.env
-cp 1.19/compile.env.linux   ${BOSH_INSTALL_TARGET}/bosh/compile.env
-cp 1.19/compile.env.generic ${BOSH_INSTALL_TARGET}/bosh/compile.env.generic
+
+export PACKAGE_NAME="$(basename ${BOSH_INSTALL_TARGET})"
+sed "s#\${PACKAGE_NAME}#${PACKAGE_NAME}#" compile.env.unix > "${BOSH_INSTALL_TARGET}/bosh/compile.env"
+sed "s#\${PACKAGE_NAME}#${PACKAGE_NAME}#" runtime.env.unix > "${BOSH_INSTALL_TARGET}/bosh/runtime.env"

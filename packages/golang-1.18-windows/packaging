@@ -3,6 +3,7 @@
 try {
   $BOSH_INSTALL_TARGET = Resolve-Path $env:BOSH_INSTALL_TARGET
   $COMPILE_ENV = Join-Path -Path "${BOSH_INSTALL_TARGET}" -ChildPath "bosh"
+  $PACKAGE_NAME = Split-Path -Path "${env:BOSH_INSTALL_TARGET}" -Leaf
 } catch {
   Write-Host "$_.Exception.Message"
   Exit 1
@@ -26,10 +27,13 @@ try {
 }
 
 try {
-  Write-Host "Copying item compile.env.windows ${COMPILE_ENV}"
+  Write-Host "Copying compile.ps1 and runtime.ps1 to ${COMPILE_ENV}"
   New-Item "${COMPILE_ENV}" -type directory
-  Copy-Item (Get-ChildItem -Path "1.18\compile.env.windows").FullName -Destination "${COMPILE_ENV}\compile.ps1"
-  Copy-Item (Get-ChildItem -Path "1.18\runtime.env.windows").FullName -Destination "${COMPILE_ENV}\runtime.ps1"
+
+  $CompileEnvPath = (Get-ChildItem -Path "compile.env.windows").FullName
+  (Get-Content -Path $CompileEnvPath).replace('${PACKAGE_NAME}', "${PACKAGE_NAME}") | Set-Content -Path "${COMPILE_ENV}\compile.ps1"
+  $RuntimeEnvPath = (Get-ChildItem -Path "runtime.env.windows").FullName
+  (Get-Content -Path $RuntimeEnvPath).replace('${PACKAGE_NAME}', "${PACKAGE_NAME}") | Set-Content -Path "${COMPILE_ENV}\runtime.ps1"
 } catch {
   Write-Host "$_.Exception.Message"
   Exit 1
