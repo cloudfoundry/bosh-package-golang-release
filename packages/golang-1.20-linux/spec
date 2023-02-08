@@ -1,5 +1,5 @@
 ---
-name: golang-1-linux
+name: golang-1.20-linux
 
 files:
 - compile.env.unix
