@@ -10,3 +10,15 @@ go1.19.5.windows-amd64.zip:
   size: 163408167
   object_id: 7feaeeff-154c-4382-68fd-2a1847dc9e06
   sha: sha256:167db91a2e40aeb453d3e59d213ecab06f62e1c4a84d13a06ccda1d999961caa
+go1.20.darwin-amd64.tar.gz:
+  size: 99857143
+  object_id: 37dd24b8-34fb-45de-65e4-225a4bdcca16
+  sha: sha256:777025500f62d14bb5a4923072cd97431887961d24de08433a60c2fe1120531d
+go1.20.linux-amd64.tar.gz:
+  size: 99869470
+  object_id: 1a24c5a5-a07e-456d-7bcc-ab66177125b9
+  sha: sha256:5a9ebcc65c1cce56e0d2dc616aff4c4cedcfbda8cc6f0288cc08cda3b18dcbf1
+go1.20.windows-amd64.zip:
+  size: 113293218
+  object_id: 6020678a-1d2d-41c1-74e4-06b709dfaa3e
+  sha: sha256:e8f6d8bbcf3df58d2ba29818e13b04c2e42ba2e4d90d580720b21c34d10bbf68
