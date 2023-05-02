@@ -13,8 +13,11 @@ jobs:
     - get: semver
       params:
         bump: minor
+    - get: bosh-cli-image
+    - get: bosh-warden-cpi-image
   - task: bump
     file: golang-release/ci/tasks/bump.yml
+    image: bosh-cli-image
     params:
       PRIVATE_YML: |
         ---
@@ -24,10 +27,12 @@ jobs:
             secret_access_key: ((bosh-packages-golang-release-uploader_assume_aws_access_key.password))
             assume_role_arn: ((bosh-packages-golang-release-uploader_assume_aws_access_key.role_arn))
   - task: test
-    privileged: true
     file: golang-release/ci/tasks/test.yml
+    privileged: true
+    image: bosh-warden-cpi-image
   - task: finalize
     file: golang-release/ci/tasks/finalize.yml
+    image: bosh-cli-image
     params:
       PRIVATE_YML: |
         ---
@@ -84,6 +89,20 @@ resources:
   type: docker-image
   source:
     repository: bosh/golang-release-security-scanner
+    username: ((docker.username))
+    password: ((docker.password))
+
+- name: bosh-cli-image
+  type: registry-image
+  source:
+    repository: bosh/cli
+    username: ((docker.username))
+    password: ((docker.password))
+
+- name: bosh-warden-cpi-image
+  type: registry-image
+  source:
+    repository: bosh/warden-cpi
     username: ((docker.username))
     password: ((docker.password))
 
