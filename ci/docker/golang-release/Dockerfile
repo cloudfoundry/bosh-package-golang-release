@@ -8,6 +8,7 @@ RUN apt-get update && \
         curl \
         gcc \
         git \
+        git-lfs \
         jq
 
 ADD . /tmp/release
