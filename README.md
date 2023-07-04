@@ -5,9 +5,9 @@ Note: requires bosh-cli version `v2.0.36`+ to `vendor-package` and `create-relea
 To vendor golang package into your release, run:
 
 ```
-$ git clone https://github.com/bosh-packages/golang-release
+$ git clone https://github.com/cloudfoundry/bosh-package-golang-release
 $ cd ~/workspace/your-release
-$ bosh vendor-package golang-1.20-linux ~/workspace/golang-release
+$ bosh vendor-package golang-1.20-linux ~/workspace/bosh-package-golang-release
 ```
 
 Included packages:
