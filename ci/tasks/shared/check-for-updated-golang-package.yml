@@ -14,12 +14,10 @@ inputs:
   optional: true
 
 outputs:
-- name: patched_cves
 - name: release-notes
 
 run:
-  path: golang-release/ci/tasks/shared/check-for-patched-cves.sh
+  path: golang-release/ci/tasks/shared/check-for-updated-golang-package.sh
 
 params:
-  SEVERITY: CRITICAL,HIGH,MEDIUM,LOW,UNKNOWN
-  SOURCE_PATH:
+  PACKAGES:

@@ -18,6 +18,10 @@ popd
 
 patched_cves="$(comm -13 <(echo "$current_list") <(echo "$previous_list"))"
 
+if [ -e "release-notes/release-notes.md" ]; then
+  cp release_notes/release-notes.md patched_cves/release-notes.md
+fi
+
 if [ -z "$patched_cves" ]; then
   echo "" > patched_cves/patched-cves.txt
   echo "{}" > patched_cves/patched-cves.json
@@ -43,4 +47,5 @@ echo "$release_notes"
 
 echo "$patched_cves" > patched_cves/patched-cves.txt
 echo "$patched_json" > patched_cves/patched-cves.json
-echo "$release_notes" > patched_cves/release-notes.md
+echo "$release_notes" >> patched_cves/release-notes.md
+echo "$release_notes" >> release-notes/release-notes.md
