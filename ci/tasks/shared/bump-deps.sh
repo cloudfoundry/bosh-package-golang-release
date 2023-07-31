@@ -2,7 +2,7 @@
 
 set -eux
 
-git clone input_repo output_repo
+cp -a input_repo/. output_repo/
 
 cd output_repo/$SOURCE_PATH
 
