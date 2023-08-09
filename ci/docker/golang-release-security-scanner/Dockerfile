@@ -5,6 +5,7 @@ RUN apt-get update && \
         apt-transport-https \
         curl \
         git \
+        git-lfs \
         gnupg \
         jq \
         lsb-release \
