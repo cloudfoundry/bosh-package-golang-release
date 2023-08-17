@@ -9,6 +9,17 @@ pushd "input_repo/$SOURCE_PATH"
 current_json="$(trivy filesystem . --severity "$SEVERITY" --security-checks vuln --format json | jq "(if .Results then .Results else [] end) | map(.Vulnerabilities) | flatten | map(select(. != null)) | unique_by(.VulnerabilityID)")"
 current_list=$(echo "$current_json" | jq -r "map(.VulnerabilityID) | sort | join(\"\\n\")")
 
+if [ -n "$GIT_PRIVATE_KEY" ]; then
+  mkdir -p ~/.ssh
+  cat > ~/.ssh/config <<EOF
+StrictHostKeyChecking no
+EOF
+
+  echo "$GIT_PRIVATE_KEY" > git-private-key
+  chmod 600 git-private-key
+  eval "$(ssh-agent -s)"
+  ssh-add git-private-key
+fi
 
 git checkout "v${version_number}"
 previous_json="$(trivy filesystem . --severity "$SEVERITY" --security-checks vuln --format json | jq "(if .Results then .Results else [] end) | map(.Vulnerabilities) | flatten | map(select(. != null)) | unique_by(.VulnerabilityID)")"

@@ -21,5 +21,6 @@ run:
   path: golang-release/ci/tasks/shared/check-for-patched-cves.sh
 
 params:
+  GIT_PRIVATE_KEY:
   SEVERITY: CRITICAL,HIGH,MEDIUM,LOW,UNKNOWN
   SOURCE_PATH:
