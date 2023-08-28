@@ -1,7 +1,0 @@
----
-name: golang-1.19-linux
-
-files:
-- compile.env.unix
-- runtime.env.unix
-- go1.19*.linux-amd64.tar.gz

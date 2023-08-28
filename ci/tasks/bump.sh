@@ -36,7 +36,7 @@ git config user.email "cf-bosh-eng@pivotal.io"
 #
 # Thus we need to determine which version is the latest version, in order to properly
 # set the version for the golang-1-{PLATFORM} packages.
-declared_versions=("1.20" "1.19")
+declared_versions=("1.20" "1.21")
 IFS=$'\n' versions=($(sort <<< "${declared_versions[*]}"))
 unset IFS
 

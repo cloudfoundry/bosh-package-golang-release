@@ -4,7 +4,7 @@ jobs:
   serial: true
   plan:
   - in_parallel:
-    - get: golang-1.19
+    - get: golang-1.21
       trigger: true
     - get: golang-1.20
       trigger: true
@@ -152,10 +152,10 @@ resources:
     - go*.windows-amd64.zip
     - go*.darwin-amd64.tar.gz
 
-- name: golang-1.19
+- name: golang-1.21
   type: dynamic-metalink
   source:
-    version: 1.19.x
+    version: 1.21.x
     version_check: |
       curl -s https://go.dev/dl/?mode=json | jq -r '.[].version[2:]'
     metalink_get: |
