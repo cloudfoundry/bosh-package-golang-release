@@ -25,12 +25,8 @@ if [ -d ./tools ]; then
   go get -u ./tools
 fi
 
-if [ $CURRENT_GO_MINOR == $NEW_GO_MINOR ]; then
-  go mod tidy
-else
-  go mod tidy -go=1.$CURRENT_GO_MINOR
-  go mod tidy -go=1.$NEW_GO_MINOR
-fi
+go mod tidy
+
 go mod vendor
 
 if [ "$(git status --porcelain)" != "" ]; then
