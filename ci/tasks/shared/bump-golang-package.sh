@@ -12,6 +12,10 @@ git clone input_repo "$repo_output"
 
 cd "$repo_output/$RELEASE_DIR"
 
+for package_to_remove in $(echo "$PACKAGES_TO_REMOVE" | jq -r '.[]'); do
+  rm -rf packages/$package_to_remove
+done
+
 echo "$PRIVATE_YML" > config/private.yml
 
 for package in $(echo "$PACKAGES" | jq -r '.[]'); do
@@ -27,4 +31,6 @@ git add -A
 package_list=$(echo "$PACKAGES" | jq -r 'join(", ")')
 first_package=$(echo "$PACKAGES" | jq -r '.[0]')
 first_version=$(cat "$task_dir/golang-release/packages/$first_package/version")
-git commit -m "Update $package_list packages to $first_version from golang-release"
+git commit -m "Update $package_list packages to $first_version from golang-release
+
+Removed: $(echo "$PACKAGES_TO_REMOVE" | jq -r '. | join(", ")')"

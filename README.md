@@ -77,6 +77,7 @@ The `bump-golang-package` task runs `bosh vendor-package` to automatically updat
 * `GIT_USER_NAME`: Required. The email that will be used to generate commits.
 * `GIT_USER_EMAIL`: Required. The user name that will be used to generate commits.
 * `PACKAGES`: Required. Specifies Golang packages will be vendored into your own BOSH release, e.g. the `golang-1-linux` package.
+* `PACKAGES_TO_REMOVE`: Optional. A list of packages to remove from the release. This can be useful if one is bumping from `golang-1.x-linux` to `golang-1.y-linux` and `1.y` is intended to replace `1.x`/
 * `PRIVATE_YML`: Required. The contents of config/private.yml for your own BOSH release. Necessary to run `bosh vendor-package`.
 * `RELEASE_DIR`: Required. The directory where your release has been cloned on disk.
 
