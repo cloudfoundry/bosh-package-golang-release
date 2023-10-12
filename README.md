@@ -65,3 +65,26 @@ export OS="windows2019"
 export JOB_NAME="test-windows"
 export VM_EXTENSIONS="[50GB_ephemeral_disk]"
 ```
+
+## Shared Concourse tasks
+
+This repository provides a couple helpful Concourse tasks in `ci/tasks/shared` that can help keep the Golang package vendored in your BOSH release up to date, and bump dependencies.
+
+### ci/tasks/shared/bump-golang-package
+
+The `bump-golang-package` task runs `bosh vendor-package` to automatically update the version of Golang vendored into your own BOSH release.
+
+* `GIT_USER_NAME`: Required. The email that will be used to generate commits.
+* `GIT_USER_EMAIL`: Required. The user name that will be used to generate commits.
+* `PACKAGES`: Required. Specifies Golang packages will be vendored into your own BOSH release, e.g. the `golang-1-linux` package.
+* `PRIVATE_YML`: Required. The contents of config/private.yml for your own BOSH release. Necessary to run `bosh vendor-package`.
+* `RELEASE_DIR`: Required. The directory where your release has been cloned on disk.
+
+### ci/tasks/shared/bump-deps
+
+The `bump-deps` task will update to go version specified in `go.mod` and then run `go get -u ./...`, and if a `tools` package is present `go get -u ./tools` in the `$SOURCE_PATH` directory specified.
+
+* `GIT_USER_NAME`: Required. The email that will be used to generate commits.
+* `GIT_USER_EMAIL`: Required. The user name that will be used to generate commits.
+* `GO_PACKAGE`: Required. The location of the vendored Golang package to be used when running `go` commands.
+* `SOURCE_PATH`: Required. The location of the Golang source you wish to update. Must contain a `go.mod` file. 
