@@ -1,9 +1,9 @@
 #!/bin/bash
 
 # Update these variables when adding a new line
-old=1.19
-last=1.20
-new=1.21
+old=1.20
+last=1.21
+new=1.22
 
 # src
 cp -fr src/${last}/ src/${new}/

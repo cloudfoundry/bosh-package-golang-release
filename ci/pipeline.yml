@@ -6,7 +6,7 @@ jobs:
   - in_parallel:
     - get: golang-1.21
       trigger: true
-    - get: golang-1.20
+    - get: golang-1.22
       trigger: true
     - get: golang-release
     - get: stemcell
@@ -121,21 +121,21 @@ resources:
     secret_access_key: ((bosh-packages-golang-release-uploader_assume_aws_access_key.password))
     assume_role_arn: ((bosh-packages-golang-release-uploader_assume_aws_access_key.role_arn))
 
-- name: golang-1.20
+- name: golang-1.22
   type: dynamic-metalink
   source:
     #NOTE: The 'include=all' parameter to this server is documented here: <https://pkg.go.dev/golang.org/x/website/internal/dl>,
     #      which was found via: <https://github.com/golang/go/issues/34864>. The devs on the project seem to believe that this is
     #      an implementation detail and could be subject to change at any time. So beware.
     #
-    #      Anyway. Because 1.20.x is an "archived" Go minor version, we must use the 'include=all' flag to get information about it.
-    #      This has the unfortunate side-effect of including "unstable" releases, but given that 1.20.x is no longer supported, it is
-    #      _probably_ okay to assume that we won't get unstable or testing releases of 1.20.x.
+    #      Anyway. Because 1.22.x is an "archived" Go minor version, we must use the 'include=all' flag to get information about it.
+    #      This has the unfortunate side-effect of including "unstable" releases, but given that 1.22.x is no longer supported, it is
+    #      _probably_ okay to assume that we won't get unstable or testing releases of 1.22.x.
     #      Because version_check is picky, we also have to filter out unstable and testing releases, as they're not specified in a 
     #      semver-compatible way. They seem to be specified with the "beta" and "rc" keywords, respectively, so we perform the required
     #      jq gyrations below. The metalink_get machinery seems to be fine with ignoring the "beta" and "rc" entries, so we don't duplicate
     #      that filtering there.
-    version: 1.20.x
+    version: 1.22.x
     version_check: |
       curl -s 'https://go.dev/dl/?mode=json&include=all' | \
         jq -r '.[].version[2:] | select((contains("rc") or contains("beta")) | not)'
