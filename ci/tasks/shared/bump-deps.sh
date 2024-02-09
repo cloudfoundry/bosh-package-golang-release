@@ -33,6 +33,7 @@ if [ $CURRENT_GO_MINOR == $GO_MINOR ]; then
   go mod tidy
 elif [ "$CURRENT_GO_MINOR" -gt "$GO_MINOR" ] ; then
   go mod tidy -go=1.$GO_MINOR
+  go mod vendor
 else
   go mod tidy -go=1.$CURRENT_GO_MINOR
   go mod tidy -go=1.$GO_MINOR
