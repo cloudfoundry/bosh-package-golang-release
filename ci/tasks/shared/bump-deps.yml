@@ -20,5 +20,5 @@ params:
   GIT_USER_NAME: CI Bot
   GIT_USER_EMAIL: bots@cloudfoundry.org
   GO_PACKAGE:
-  GO_MINOR:
+  NEW_GO_MINOR:
   SOURCE_PATH:
