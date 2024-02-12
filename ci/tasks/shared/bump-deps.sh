@@ -22,6 +22,7 @@ if [ -z "$GO_MINOR" ]; then
 fi
 
 go mod edit -go=1.$GO_MINOR
+go mod edit -toolchain=go1.$GO_MINOR.0
 
 go get -u ./...
 
