@@ -20,5 +20,5 @@ params:
   GIT_USER_NAME: CI Bot
   GIT_USER_EMAIL: bots@cloudfoundry.org
   GO_PACKAGE:
-  NEW_GO_MINOR:
+  DESIRED_GO_MAJOR_MINOR: # Defaults to the previous major.minor version to avoid breaking others who import the packages and are not yet on the latest version.
   SOURCE_PATH:
