@@ -1,0 +1,24 @@
+---
+platform: linux
+
+image_resource:
+  type: docker-image
+  source:
+    repository: bosh/golang-release
+
+inputs:
+- name: previous_binary
+- name: current_binary
+- name: golang-release
+- name: release-notes
+  optional: true
+
+outputs:
+- name: release-notes
+
+run:
+  path: golang-release/ci/tasks/shared/check-for-updated-binary-version.sh
+
+params:
+  CURRENT_BINARY_PATTERN: '*'
+  PREVIOUS_BINARY_PATTERN: '*'
