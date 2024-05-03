@@ -60,3 +60,4 @@ echo "$patched_cves" > patched_cves/patched-cves.txt
 echo "$patched_json" > patched_cves/patched-cves.json
 echo "$release_notes" >> patched_cves/release-notes.md
 echo "$release_notes" >> release-notes/release-notes.md
+touch release-notes/needs-release

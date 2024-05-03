@@ -30,3 +30,4 @@ fi
 echo "$release_notes"
 
 echo "$release_notes" >> release-notes/release-notes.md
+touch release-notes/needs-release
