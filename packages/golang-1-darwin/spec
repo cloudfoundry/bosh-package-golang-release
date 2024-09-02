@@ -4,4 +4,4 @@ name: golang-1-darwin
 files:
 - compile.env.unix
 - runtime.env.unix
-- go1.22*.darwin-amd64.tar.gz
+- go1.23*.darwin-amd64.tar.gz

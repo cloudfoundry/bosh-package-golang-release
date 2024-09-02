@@ -4,4 +4,4 @@ name: golang-1-linux
 files:
 - compile.env.unix
 - runtime.env.unix
-- go1.22*.linux-amd64.tar.gz
+- go1.23*.linux-amd64.tar.gz
