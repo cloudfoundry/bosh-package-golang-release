@@ -13,8 +13,8 @@ $ bosh vendor-package golang-1.22-linux ~/workspace/bosh-package-golang-release
 Included packages:
 
 - `golang-1-{linux,darwin,windows}`: updated with latest version of go 1.x
-- `golang-1.21-{linux,darwin,windows}`: updated with latest version of go 1.21.x
 - `golang-1.22-{linux,darwin,windows}`: updated with latest version of go 1.22.x
+- `golang-1.23-{linux,darwin,windows}`: updated with latest version of go 1.23.x
 
 To use `golang-*` package for compilation in your packaging script:
 
