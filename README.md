@@ -7,7 +7,7 @@ To vendor golang package into your release, run:
 ```
 $ git clone https://github.com/cloudfoundry/bosh-package-golang-release
 $ cd ~/workspace/your-release
-$ bosh vendor-package golang-1.22-linux ~/workspace/bosh-package-golang-release
+$ bosh vendor-package golang-1.23-linux ~/workspace/bosh-package-golang-release
 ```
 
 Included packages:
@@ -20,26 +20,26 @@ To use `golang-*` package for compilation in your packaging script:
 
 ```bash
 #!/bin/bash -eu
-source /var/vcap/packages/golang-1.22-linux/bosh/compile.env
+source /var/vcap/packages/golang-1.23-linux/bosh/compile.env
 go build ...
 ```
 or on Windows:
 
 ```powershell
-. C:\var\vcap\packages\golang-1.22-windows\bosh\compile.ps1
+. C:\var\vcap\packages\golang-1.23-windows\bosh\compile.ps1
 go build ...
 ```
 [advanced use] To use `golang-*` package at runtime in your job scripts:
 
 ```bash
 #!/bin/bash -eu
-source /var/vcap/packages/golang-1.22-linux/bosh/runtime.env
+source /var/vcap/packages/golang-1.23-linux/bosh/runtime.env
 go run ...
 ```
 or on Windows:
 
 ```powershell
-. C:\var\vcap\packages\golang-1.22-windows\bosh\runtime.ps1
+. C:\var\vcap\packages\golang-1.23-windows\bosh\runtime.ps1
 go run ...
 ```
 
