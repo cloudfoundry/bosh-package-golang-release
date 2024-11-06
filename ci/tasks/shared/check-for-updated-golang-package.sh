@@ -2,6 +2,11 @@
 
 set -euo pipefail
 
+echo "!!!!!!!!!!!!!!"
+echo "A better maintained generic version of this task is available here: https://github.com/cloudfoundry/bosh-shared-ci/blob/main/tasks/release/check-for-updated-vendored-packages.yml"
+echo "Please transition to using that script as this one is unlikely to receive future updates"
+echo "!!!!!!!!!!!!!!"
+
 version_number="$(cat version/version)"
 
 updated_package=0
