@@ -48,6 +48,7 @@ jobs:
             json_key: '((cloud-foundry-gcp-credentials))'
   - in_parallel:
     - put: semver
+      inputs: detect
       params:
         file: semver/version
     - put: golang-release
