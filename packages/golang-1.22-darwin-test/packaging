@@ -1,7 +1,0 @@
-#!/bin/bash
-
-set -eux
-
-source /var/vcap/packages/golang-1.22-darwin/bosh/compile.env
-
-which go
