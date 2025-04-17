@@ -93,29 +93,29 @@ resources:
   type: docker-image
   source:
     repository: bosh/golang-release
-    username: ((dockerhub_username))
-    password: ((dockerhub_password))
+    username: ((bosh-dockerhub.username))
+    password: ((bosh-dockerhub.password))
 
 - name: golang-release-security-scanner-image
   type: docker-image
   source:
     repository: bosh/golang-release-security-scanner
-    username: ((dockerhub_username))
-    password: ((dockerhub_password))
+    username: ((bosh-dockerhub.username))
+    password: ((bosh-dockerhub.password))
 
 - name: bosh-cli-image
   type: registry-image
   source:
     repository: bosh/cli
-    username: ((dockerhub_username))
-    password: ((dockerhub_password))
+    username: ((bosh-dockerhub.username))
+    password: ((bosh-dockerhub.password))
 
 - name: bosh-warden-cpi-image
   type: registry-image
   source:
     repository: bosh/warden-cpi
-    username: ((dockerhub_username))
-    password: ((dockerhub_password))
+    username: ((bosh-dockerhub.username))
+    password: ((bosh-dockerhub.password))
 
 - name: stemcell
   type: bosh-io-stemcell
