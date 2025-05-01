@@ -1,15 +1,9 @@
 FROM ubuntu:jammy
 
-COPY --from=bosh/bosh-ecosystem-concourse:latest /usr/local/bin/bosh /usr/local/bin/bosh
+COPY --from=bosh/integration:latest /usr/local/bin/bosh /usr/local/bin/bosh
 
 RUN apt-get update && \
-    apt-get install -y \
-        build-essential \
-        curl \
-        gcc \
-        git \
-        git-lfs \
-        jq
+    apt-get install -y gcc
 
 ADD . /tmp/release
 
