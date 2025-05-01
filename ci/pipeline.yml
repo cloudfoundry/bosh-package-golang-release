@@ -92,16 +92,16 @@ resources:
 - name: golang-release-image
   type: docker-image
   source:
-    repository: bosh/golang-release
-    username: ((bosh-dockerhub.username))
-    password: ((bosh-dockerhub.password))
+    repository: ghcr.io/cloudfoundry/golang-release
+    username: ((github_read_write_packages.username))
+    password: ((github_read_write_packages.password))
 
 - name: golang-release-security-scanner-image
   type: docker-image
   source:
-    repository: bosh/golang-release-security-scanner
-    username: ((bosh-dockerhub.username))
-    password: ((bosh-dockerhub.password))
+    repository: ghcr.io/cloudfoundry/golang-release-security-scanner
+    username: ((github_read_write_packages.username))
+    password: ((github_read_write_packages.password))
 
 - name: bosh-cli-image
   type: registry-image

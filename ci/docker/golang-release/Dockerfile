@@ -3,7 +3,7 @@ FROM ubuntu:jammy
 COPY --from=bosh/integration:latest /usr/bin/bosh /usr/local/bin/bosh
 
 RUN apt-get update && \
-    apt-get install -y gcc
+    apt-get install -y gcc ca-certificates
 
 ADD . /tmp/release
 
