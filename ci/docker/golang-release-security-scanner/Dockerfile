@@ -1,3 +1,5 @@
+LABEL org.opencontainers.image.source=https://github.com/cloudfoundry/bosh-package-golang-release
+
 FROM ubuntu:jammy
 
 RUN apt-get update && \
