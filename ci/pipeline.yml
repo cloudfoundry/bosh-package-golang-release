@@ -65,12 +65,16 @@ jobs:
     params:
       build: "golang-release"
       dockerfile: "golang-release/ci/docker/golang-release/Dockerfile"
+      labels:
+        org.opencontainers.image.source: https://github.com/cloudfoundry/bosh-package-golang-release
     get_params:
       skip_download: true
   - put: golang-release-security-scanner-image
     params:
       build: "golang-release"
       dockerfile: "golang-release/ci/docker/golang-release-security-scanner/Dockerfile"
+      labels:
+        org.opencontainers.image.source: https://github.com/cloudfoundry/bosh-package-golang-release
     get_params:
       skip_download: true
 

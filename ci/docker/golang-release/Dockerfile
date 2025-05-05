@@ -1,7 +1,5 @@
 FROM ubuntu:jammy
 
-
-LABEL org.opencontainers.image.source=https://github.com/cloudfoundry/bosh-package-golang-release
 COPY --from=bosh/integration:latest /usr/bin/bosh /usr/local/bin/bosh
 
 RUN apt-get update && \
