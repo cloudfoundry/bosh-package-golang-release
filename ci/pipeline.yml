@@ -104,22 +104,20 @@ resources:
   type: docker-image
   source:
     repository: ghcr.io/cloudfoundry/bosh/golang-release-security-scanner
-    username: ((github_read_write_packages.username))
-    password: ((github_read_write_packages.password))
 
 - name: bosh-cli-image
   type: registry-image
   source:
-    repository: bosh/cli
-    username: ((bosh-dockerhub.username))
-    password: ((bosh-dockerhub.password))
+    repository: ghcr.io/bosh/cli
+    username: ((github_read_write_packages.username))
+    password: ((github_read_write_packages.password))
 
 - name: bosh-warden-cpi-image
   type: registry-image
   source:
-    repository: bosh/warden-cpi
-    username: ((bosh-dockerhub.username))
-    password: ((bosh-dockerhub.password))
+    repository: ghcr.io/bosh/warden-cpi
+    username: ((github_read_write_packages.username))
+    password: ((github_read_write_packages.password))
 
 - name: stemcell
   type: bosh-io-stemcell
