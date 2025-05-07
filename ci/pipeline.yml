@@ -108,14 +108,14 @@ resources:
 - name: bosh-cli-image
   type: registry-image
   source:
-    repository: ghcr.io/bosh/cli
+    repository: ghcr.io/cloudfoundry/bosh/cli
     username: ((github_read_write_packages.username))
     password: ((github_read_write_packages.password))
 
 - name: bosh-warden-cpi-image
   type: registry-image
   source:
-    repository: ghcr.io/bosh/warden-cpi
+    repository: ghcr.io/cloudfoundry/bosh/warden-cpi
     username: ((github_read_write_packages.username))
     password: ((github_read_write_packages.password))
 
