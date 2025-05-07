@@ -33,6 +33,7 @@ jobs:
     image: bosh-warden-cpi-image
   - task: finalize
     file: bosh-shared-ci/tasks/release/create-final-release.yml
+    image: bosh-cli-image
     input_mapping:
       release_repo: golang-release
       version: semver
@@ -104,6 +105,8 @@ resources:
   type: docker-image
   source:
     repository: ghcr.io/cloudfoundry/bosh/golang-release-security-scanner
+    username: ((github_read_write_packages.username))
+    password: ((github_read_write_packages.password))
 
 - name: bosh-cli-image
   type: registry-image
