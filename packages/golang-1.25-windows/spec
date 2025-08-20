@@ -1,8 +1,8 @@
 ---
-name: golang-1.23-windows
+name: golang-1.25-windows
 
 files:
 - compile.env.windows
 - runtime.env.windows
 - exiter.ps1
-- go1.23*.windows-amd64.zip
+- go1.25*.windows-amd64.zip
