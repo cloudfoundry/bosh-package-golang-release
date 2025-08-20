@@ -19,7 +19,7 @@ pushd ${script_dir}/..
 
   echo "-----> `date`: Run test errand"
   bosh -n -d test run-errand golang-1-${JOB_NAME}
-  bosh -n -d test run-errand golang-1.23-${JOB_NAME}
+  bosh -n -d test run-errand golang-1.25-${JOB_NAME}
   bosh -n -d test run-errand golang-1.24-${JOB_NAME}
 
   echo "-----> `date`: Delete deployments"

@@ -1,5 +1,5 @@
 ---
-name: golang-1-darwin
+name: golang-1.25-darwin
 
 files:
 - compile.env.unix
