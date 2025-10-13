@@ -10,15 +10,15 @@ go1.24.8.windows-amd64.zip:
   size: 87280688
   object_id: bc82d4f7-6ad0-47d0-637b-571883add515
   sha: sha256:0de7b65422d9377404a22f3903f17b20e4065f6c43e136ae2de16494c8c6b057
-go1.25.2.darwin-amd64.tar.gz:
-  size: 60488889
-  object_id: dbb97f4b-dcd8-4dc3-4e3d-03cbfffe063c
-  sha: sha256:95493abb01da81638ab5083ff3f97e8f923cb42a64c2e16728e3cf5b0cd3fc5a
-go1.25.2.linux-amd64.tar.gz:
-  size: 59766306
-  object_id: f7be6836-8e0e-460d-62a0-ddbb2fcc8241
-  sha: sha256:d7fa7f8fbd16263aa2501d681b11f972a5fd8e811f7b10cb9b26d031a3d7454b
-go1.25.2.windows-amd64.zip:
-  size: 67437540
-  object_id: f680be5d-dbbb-4306-7d65-8cf98a3a9d55
-  sha: sha256:c18b46f6aa44dbfcd54a9db19dd2fcc5ad684819addcfcf968aa75dad89a89c8
+go1.25.3.darwin-amd64.tar.gz:
+  size: 60491973
+  object_id: d223f8dd-2541-450e-74c6-eed5dd081042
+  sha: sha256:1641050b422b80dfd6299f8aa7eb8798d1cd23eac7e79f445728926e881b7bcd
+go1.25.3.linux-amd64.tar.gz:
+  size: 59767979
+  object_id: c921b707-4f07-4aa2-5856-1f38212037e8
+  sha: sha256:0335f314b6e7bfe08c3d0cfaa7c19db961b7b99fb20be62b0a826c992ad14e0f
+go1.25.3.windows-amd64.zip:
+  size: 67439680
+  object_id: 4779545d-34b9-4eac-5c48-9c2da69f8732
+  sha: sha256:bc249a599c6fe9d0d4093c363856f6c6320dbbe05e5d5d8818b711fb4a14fc23
