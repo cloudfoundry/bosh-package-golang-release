@@ -22,5 +22,6 @@ params:
   GO_PACKAGE:
   GOPROXY:
   GOSUMDB:
+  GOOS_LIST: linux # comma-separated list of GOOS values, ex linux,darwin,windows
   DESIRED_GO_MAJOR_MINOR: # Defaults to the previous major.minor version to avoid breaking others who import the packages and are not yet on the latest version.
   SOURCE_PATH:
