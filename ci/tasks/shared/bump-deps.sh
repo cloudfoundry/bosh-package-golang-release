@@ -4,10 +4,11 @@ set -eux
 
 cp -a input_repo/. output_repo/
 
-cd output_repo/$SOURCE_PATH
+cd "output_repo/${SOURCE_PATH}"
 
-if [ ! -z "$GO_PACKAGE" ]; then
-  source /var/vcap/packages/$GO_PACKAGE/bosh/compile.env
+if [ -n "${GO_PACKAGE}" ]; then
+  # shellcheck disable=SC1090
+  source "/var/vcap/packages/${GO_PACKAGE}/bosh/compile.env"
   # Since we are using Go modules, the GOPATH is not needed and actually conflicts with using modules
   unset GOPATH
 fi
@@ -16,19 +17,30 @@ fi
 #assume the go-dep-bumper and bosh-utils are bumping at the same cadence.
 GO_MAJOR=$(go version | sed 's/go version go\([0-9]\+\)\.\([0-9]\+\)[. ].*$/\1/g')
 GO_MINOR=$(go version | sed 's/go version go\([0-9]\+\)\.\([0-9]\+\)[. ].*$/\2/g')
-CURRENT_GO_MOD_MAJOR_MINOR=$(cat go.mod | grep -E "^go 1.*" | sed "s/^\(go \)\([0-9]\+.[0-9]\+\).*/\2/")
+CURRENT_GO_MOD_MAJOR_MINOR=$(grep -E "^go 1.*" go.mod | sed "s/^\(go \)\([0-9]\+.[0-9]\+\).*/\2/")
 
 if [ -z "${DESIRED_GO_MAJOR_MINOR}" ]; then
   DESIRED_GO_MAJOR_MINOR="${GO_MAJOR}.$((GO_MINOR-1))"
 fi
 
-go get -u ./... go@${DESIRED_GO_MAJOR_MINOR}.0 toolchain@go${DESIRED_GO_MAJOR_MINOR}.0
+# shellcheck disable=SC2206
+goos_array=(${GOOS_LIST/,/ })
 
-if [ -d ./tools ]; then
-  go get -u ./tools go@${DESIRED_GO_MAJOR_MINOR}.0 toolchain@go${DESIRED_GO_MAJOR_MINOR}.0
+if (( ${#goos_array[@]} == 0 )); then
+  echo "Error: GOOS_LIST was empty, at least one valid GOOS value must be provided"
+  exit 1
 fi
 
-go mod tidy -go=${DESIRED_GO_MAJOR_MINOR}.0
+# Loop through the array
+for goos in "${goos_array[@]}"; do
+  GOOS="${goos}" go get -u ./... "go@${DESIRED_GO_MAJOR_MINOR}.0" "toolchain@go${DESIRED_GO_MAJOR_MINOR}.0"
+
+  if [ -d ./tools ]; then
+    GOOS="${goos}" go get -u ./tools "go@${DESIRED_GO_MAJOR_MINOR}.0" "toolchain@go${DESIRED_GO_MAJOR_MINOR}.0"
+  fi
+done
+
+go mod tidy -go="${DESIRED_GO_MAJOR_MINOR}.0"
 
 go mod vendor
 
