@@ -24,7 +24,7 @@ if [ -z "${DESIRED_GO_MAJOR_MINOR}" ]; then
 fi
 
 # shellcheck disable=SC2206
-goos_array=(${GOOS_LIST/,/ })
+goos_array=(${GOOS_LIST//,/ })
 
 if (( ${#goos_array[@]} == 0 )); then
   echo "Error: GOOS_LIST was empty, at least one valid GOOS value must be provided"
