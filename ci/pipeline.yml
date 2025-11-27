@@ -119,6 +119,7 @@ resources:
   type: registry-image
   source:
     repository: ghcr.io/cloudfoundry/bosh/warden-cpi
+    tag: noble
     username: ((github_read_write_packages.username))
     password: ((github_read_write_packages.password))
 
