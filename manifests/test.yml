@@ -44,11 +44,11 @@ instance_groups:
   networks:
   - name: default
 
-- name: golang-1.24-test
+- name: golang-1.26-test
   azs: [z1]
   instances: 1
   jobs:
-  - name: golang-1.24-((job-name))
+  - name: golang-1.26-((job-name))
     release: golang
     properties: {}
   vm_type: default

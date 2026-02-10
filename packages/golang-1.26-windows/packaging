@@ -9,7 +9,7 @@ try {
   Exit 1
 }
 
-$path=(Get-ChildItem "go1.24*.windows-amd64.zip").FullName
+$path=(Get-ChildItem "go1.26*.windows-amd64.zip").FullName
 
 Add-Type -AssemblyName System.IO.Compression.FileSystem
 function Unzip
