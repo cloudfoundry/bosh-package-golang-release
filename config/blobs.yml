@@ -10,3 +10,15 @@ go1.25.7.windows-amd64.zip:
   size: 67448678
   object_id: 37894f6c-0c5e-4899-5122-4ced94d938fc
   sha: sha256:c75e5f4ff62d085cc0017be3ad19d5536f46825fa05db06ec468941f847e3228
+go1.26.0.darwin-amd64.tar.gz:
+  size: 67708850
+  object_id: b30e0c13-8467-4e26-649f-fc63474cebd1
+  sha: sha256:1ca28b7703cbea05a65b2a1d92d6b308610ef92f8824578a0874f2e60c9d5a22
+go1.26.0.linux-amd64.tar.gz:
+  size: 66768540
+  object_id: d49e0d80-a67c-41b4-7384-0e3c1e7ba0d1
+  sha: sha256:aac1b08a0fb0c4e0a7c1555beb7b59180b05dfc5a3d62e40e9de90cd42f88235
+go1.26.0.windows-amd64.zip:
+  size: 74815266
+  object_id: 1873fffd-dae8-41f2-6b76-ee1b2ab0ac01
+  sha: sha256:9bbe0fc64236b2b51f6255c05c4232532b8ecc0e6d2e00950bd3021d8a4d07d4
