@@ -1,0 +1,12 @@
+---
+name: golang-1.26-test
+
+templates:
+  run: bin/run
+
+packages:
+- golang-1.26-linux
+- golang-1.26-linux-test
+- golang-1.26-darwin-test
+
+properties: {}

@@ -1,7 +1,0 @@
----
-name: golang-1.24-darwin
-
-files:
-- compile.env.unix
-- runtime.env.unix
-- go1.24*.darwin-amd64.tar.gz

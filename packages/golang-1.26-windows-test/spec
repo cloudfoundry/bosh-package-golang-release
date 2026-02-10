@@ -1,0 +1,9 @@
+---
+name: golang-1.26-windows-test
+
+dependencies:
+- golang-1.26-windows
+
+files:
+- test.go
+- exiter.ps1
