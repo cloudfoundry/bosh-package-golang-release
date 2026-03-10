@@ -16,6 +16,7 @@ jobs:
     - get: bosh-cli-image
     - get: bosh-warden-cpi-image
     - get: bosh-shared-ci
+    - get: slack-alert
   - task: bump
     file: golang-release/ci/tasks/bump.yml
     image: bosh-cli-image
@@ -57,6 +58,14 @@ jobs:
         rebase: true
         repository: release_repo
         tag: release_metadata/tag-name
+  on_failure:
+    do:
+    - put: slack-alert
+      params:
+        channel: '#bosh-private'
+        text: |
+          Build for $BUILD_PIPELINE_NAME failed!
+          View it here: $ATC_EXTERNAL_URL/teams/$BUILD_TEAM_NAME/pipelines/$BUILD_PIPELINE_NAME/jobs/$BUILD_JOB_NAME/builds/$BUILD_NAME
 
 - name: build-docker-image
   plan:
@@ -186,6 +195,11 @@ resources:
     - go*.windows-amd64.zip
     - go*.darwin-amd64.tar.gz
 
+- name: slack-alert
+  type: slack-notification
+  source:
+    url: ((slack_hook_url))
+
 resource_types:
 - name: dynamic-metalink
   type: docker-image
@@ -197,3 +211,9 @@ resource_types:
   source:
     repository: concourse/semver-resource
     tag: 1.6
+
+- name: slack-notification
+  type: docker-image
+  source:
+    repository: cfcommunity/slack-notification-resource
+    tag:        latest
