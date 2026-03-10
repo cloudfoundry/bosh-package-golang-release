@@ -59,12 +59,13 @@ jobs:
         repository: release_repo
         tag: release_metadata/tag-name
   on_failure:
-  - put: slack-alert
-    params:
-      channel: '#bosh-private'
-      text: |
-        Build for $BUILD_PIPELINE_NAME failed!
-        View it here: $ATC_EXTERNAL_URL/teams/$BUILD_TEAM_NAME/pipelines/$BUILD_PIPELINE_NAME/jobs/$BUILD_JOB_NAME/builds/$BUILD_NAME
+    do:
+    - put: slack-alert
+      params:
+        channel: '#bosh-private'
+        text: |
+          Build for $BUILD_PIPELINE_NAME failed!
+          View it here: $ATC_EXTERNAL_URL/teams/$BUILD_TEAM_NAME/pipelines/$BUILD_PIPELINE_NAME/jobs/$BUILD_JOB_NAME/builds/$BUILD_NAME
 
 - name: build-docker-image
   plan:
