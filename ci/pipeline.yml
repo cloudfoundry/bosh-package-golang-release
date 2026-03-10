@@ -57,6 +57,12 @@ jobs:
         rebase: true
         repository: release_repo
         tag: release_metadata/tag-name
+  on_failure:
+  - put: gchat-notification
+    params:
+      text: |
+        Build for $BUILD_PIPELINE_NAME failed!
+        View it here: $ATC_EXTERNAL_URL/teams/$BUILD_TEAM_NAME/pipelines/$BUILD_PIPELINE_NAME/jobs/$BUILD_JOB_NAME/builds/$BUILD_NAME
 
 - name: build-docker-image
   plan:
@@ -186,6 +192,11 @@ resources:
     - go*.windows-amd64.zip
     - go*.darwin-amd64.tar.gz
 
+- name: gchat-notification
+  type: google-chat-notify-resource
+  source:
+    url: ((gchat-webhook-dap-bosh-ecosystem-dev))
+
 resource_types:
 - name: dynamic-metalink
   type: docker-image
@@ -197,3 +208,11 @@ resource_types:
   source:
     repository: concourse/semver-resource
     tag: 1.6
+
+- name: google-chat-notify-resource
+  type: registry-image
+  source:
+    repository: springio/google-chat-notify-resource
+    tag: 0.0.1-SNAPSHOT
+    username: ((docker.username))
+    password: ((docker.password))
