@@ -202,18 +202,18 @@ resources:
 
 resource_types:
 - name: dynamic-metalink
-  type: docker-image
+  type: registry-image
   source:
     repository: dpb587/dynamic-metalink-resource
 
 - name: semver
-  type: docker-image
+  type: registry-image
   source:
     repository: concourse/semver-resource
     tag: 1.6
 
 - name: slack-notification
-  type: docker-image
+  type: registry-image
   source:
     repository: cfcommunity/slack-notification-resource
     tag:        latest
