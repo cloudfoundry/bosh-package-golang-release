@@ -1,0 +1,7 @@
+---
+name: fips-golang-1.26-linux
+
+files:
+- compile-fips.env.unix
+- runtime.env.unix
+- go1.26*.linux-amd64.tar.gz
