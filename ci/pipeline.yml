@@ -71,22 +71,50 @@ jobs:
   plan:
   - get: golang-release
     trigger: true
+  - task: build-golang-release-image
+    privileged: true
+    config:
+      platform: linux
+      image_resource:
+        type: registry-image
+        source:
+          repository: concourse/oci-build-task
+      inputs:
+      - name: golang-release
+      outputs:
+      - name: image
+      params:
+        CONTEXT: golang-release
+        DOCKERFILE: golang-release/ci/docker/golang-release/Dockerfile
+        LABEL_org.opencontainers.image.source: https://github.com/cloudfoundry/bosh-package-golang-release
+      run:
+        path: build
   - put: golang-release-image
+    no_get: true
     params:
-      build: "golang-release"
-      dockerfile: "golang-release/ci/docker/golang-release/Dockerfile"
-      labels:
-        org.opencontainers.image.source: https://github.com/cloudfoundry/bosh-package-golang-release
-    get_params:
-      skip_download: true
+      image: image/image.tar
+  - task: build-golang-release-security-scanner-image
+    privileged: true
+    config:
+      platform: linux
+      image_resource:
+        type: registry-image
+        source:
+          repository: concourse/oci-build-task
+      inputs:
+      - name: golang-release
+      outputs:
+      - name: image
+      params:
+        CONTEXT: golang-release
+        DOCKERFILE: golang-release/ci/docker/golang-release-security-scanner/Dockerfile
+        LABEL_org.opencontainers.image.source: https://github.com/cloudfoundry/bosh-package-golang-release
+      run:
+        path: build
   - put: golang-release-security-scanner-image
+    no_get: true
     params:
-      build: "golang-release"
-      dockerfile: "golang-release/ci/docker/golang-release-security-scanner/Dockerfile"
-      labels:
-        org.opencontainers.image.source: https://github.com/cloudfoundry/bosh-package-golang-release
-    get_params:
-      skip_download: true
+      image: image/image.tar
 
 
 resources:
@@ -104,16 +132,18 @@ resources:
     private_key: ((github_deploy_key_bosh-package-golang-release.private_key))
 
 - name: golang-release-image
-  type: docker-image
+  type: registry-image
   source:
     repository: ghcr.io/cloudfoundry/bosh/golang-release
+    tag: latest
     username: ((github_read_write_packages.username))
     password: ((github_read_write_packages.password))
 
 - name: golang-release-security-scanner-image
-  type: docker-image
+  type: registry-image
   source:
     repository: ghcr.io/cloudfoundry/bosh/golang-release-security-scanner
+    tag: latest
     username: ((github_read_write_packages.username))
     password: ((github_read_write_packages.password))
 
