@@ -1,0 +1,11 @@
+---
+name: fips-golang-1.26-test
+
+templates:
+  run: bin/run
+
+packages:
+- fips-golang-1.26-linux
+- fips-golang-1.26-linux-test
+
+properties: {}
