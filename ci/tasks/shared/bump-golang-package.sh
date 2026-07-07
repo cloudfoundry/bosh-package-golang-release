@@ -31,6 +31,10 @@ git add -A
 package_list=$(echo "$PACKAGES" | jq -r 'join(", ")')
 first_package=$(echo "$PACKAGES" | jq -r '.[0]')
 first_version=$(cat "$task_dir/golang-release/packages/$first_package/version")
-git commit -m "Update $package_list packages to $first_version from golang-release
+commit_message="Update $package_list packages to $first_version from golang-release
 
 Removed: $(echo "$PACKAGES_TO_REMOVE" | jq -r '. | join(", ")')"
+if [ -n "${GIT_COMMIT_MESSAGE_SUFFIX:-}" ]; then
+  commit_message="${commit_message}${GIT_COMMIT_MESSAGE_SUFFIX}"
+fi
+git commit -m "${commit_message}"
