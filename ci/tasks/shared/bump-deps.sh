@@ -35,7 +35,14 @@ fi
 for goos in "${goos_array[@]}"; do
   GOOS="${goos}" go get -u ./... "go@${DESIRED_GO_MAJOR_MINOR}.0" "toolchain@go${DESIRED_GO_MAJOR_MINOR}.0"
 
+  # NEW: Update Go 1.24+ tool dependencies if any are declared
+  if grep -qE '^tool |^tool\s*\(' go.mod; then
+    echo "Updating go.mod tool entries and dependencies..."
+    GOOS="${goos}" go get -u tool "go@${DESIRED_GO_MAJOR_MINOR}.0" "toolchain@go${DESIRED_GO_MAJOR_MINOR}.0"
+  fi
+
   if [ -d ./tools ]; then
+    echo "Updating legacy 'tools.go pattern' dependencies..."
     GOOS="${goos}" go get -u ./tools "go@${DESIRED_GO_MAJOR_MINOR}.0" "toolchain@go${DESIRED_GO_MAJOR_MINOR}.0"
   fi
 done
