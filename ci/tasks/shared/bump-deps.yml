@@ -24,4 +24,5 @@ params:
   GOSUMDB:
   GOOS_LIST: linux # comma-separated list of GOOS values, ex linux,darwin,windows
   DESIRED_GO_MAJOR_MINOR: # Defaults to the previous major.minor version to avoid breaking others who import the packages and are not yet on the latest version.
+  BUMP_TEST_DEPS: # any non-empty value updates test dependencies by passing `-t` to `go get -u`
   SOURCE_PATH:
