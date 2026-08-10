@@ -23,6 +23,20 @@ if [ -z "${DESIRED_GO_MAJOR_MINOR}" ]; then
   DESIRED_GO_MAJOR_MINOR="${GO_MAJOR}.$((GO_MINOR-1))"
 fi
 
+function go_get() {
+  local go_version="${DESIRED_GO_MAJOR_MINOR}.0"
+  local package_arg="${1}"
+  local args=(-u)
+  if [[ -n "${BUMP_TEST_DEPS:-}" ]]; then
+    args+=(-t)
+  fi
+
+  GOOS="${goos}" go get "${args[@]}" \
+    "${package_arg}" \
+    "go@${go_version}" \
+    "toolchain@go${go_version}"
+}
+
 # shellcheck disable=SC2206
 goos_array=(${GOOS_LIST//,/ })
 
@@ -31,19 +45,19 @@ if (( ${#goos_array[@]} == 0 )); then
   exit 1
 fi
 
-# Loop through the array
+# Loop through the GOOS array
 for goos in "${goos_array[@]}"; do
-  GOOS="${goos}" go get -u ./... "go@${DESIRED_GO_MAJOR_MINOR}.0" "toolchain@go${DESIRED_GO_MAJOR_MINOR}.0"
+  go_get ./...
 
   # NEW: Update Go 1.24+ tool dependencies if any are declared
   if grep -qE '^tool |^tool\s*\(' go.mod; then
     echo "Updating go.mod tool entries and dependencies..."
-    GOOS="${goos}" go get -u tool "go@${DESIRED_GO_MAJOR_MINOR}.0" "toolchain@go${DESIRED_GO_MAJOR_MINOR}.0"
+    go_get tool
   fi
 
   if [ -d ./tools ]; then
     echo "Updating legacy 'tools.go pattern' dependencies..."
-    GOOS="${goos}" go get -u ./tools "go@${DESIRED_GO_MAJOR_MINOR}.0" "toolchain@go${DESIRED_GO_MAJOR_MINOR}.0"
+    go_get ./tools
   fi
 done
 
