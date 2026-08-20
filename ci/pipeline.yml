@@ -14,7 +14,7 @@ jobs:
       params:
         bump: minor
     - get: bosh-cli-image
-    - get: bosh-warden-cpi-image
+    - get: docker-cpi-image
     - get: bosh-shared-ci
     - get: slack-alert
   - task: bump
@@ -31,7 +31,7 @@ jobs:
   - task: test
     file: golang-release/ci/tasks/test.yml
     privileged: true
-    image: bosh-warden-cpi-image
+    image: docker-cpi-image
   - task: finalize
     file: bosh-shared-ci/tasks/release/create-final-release.yml
     image: bosh-cli-image
@@ -154,10 +154,11 @@ resources:
     username: ((github_read_write_packages.username))
     password: ((github_read_write_packages.password))
 
-- name: bosh-warden-cpi-image
+- name: docker-cpi-image
   type: registry-image
   source:
-    repository: ghcr.io/cloudfoundry/bosh/warden-cpi
+    repository: ghcr.io/cloudfoundry/bosh/docker-cpi
+    tag: main
     username: ((github_read_write_packages.username))
     password: ((github_read_write_packages.password))
 
