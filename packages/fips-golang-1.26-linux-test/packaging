@@ -1,0 +1,10 @@
+#!/bin/bash
+
+set -eux
+
+source /var/vcap/packages/fips-golang-1.26-linux/bosh/compile.env
+
+cp test-fips.go ${BOSH_INSTALL_TARGET}/
+
+mkdir ${BOSH_INSTALL_TARGET}/bin
+go build -o ${BOSH_INSTALL_TARGET}/bin/test-fips test-fips.go

@@ -1,0 +1,13 @@
+#!/bin/bash
+
+set -eux
+
+echo "Testing FIPS 140-3 mode is active in compiled binary"
+/var/vcap/packages/fips-golang-1.26-linux-test/bin/test-fips
+
+echo "Verifying FIPS 140-3 indicators in binary"
+strings /var/vcap/packages/fips-golang-1.26-linux-test/bin/test-fips | grep -q "DefaultGODEBUG=fips140=on"
+echo "PASS: DefaultGODEBUG=fips140=on found in binary"
+
+strings /var/vcap/packages/fips-golang-1.26-linux-test/bin/test-fips | grep -q "crypto/internal/fips140/v1.0.0"
+echo "PASS: CMVP v1.0.0 certified module snapshot embedded"

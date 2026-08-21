@@ -15,6 +15,7 @@ Included packages:
 - `golang-1-{linux,darwin,windows}`: updated with latest version of go 1.x
 - `golang-1.25-{linux,darwin,windows}`: updated with latest version of go 1.25.x
 - `golang-1.26-{linux,darwin,windows}`: updated with latest version of go 1.26.x
+- `fips-golang-1.26-linux`: FIPS 140-3 variant of go 1.26.x (see [FIPS 140-3 Support](#fips-140-3-support))
 
 To use `golang-*` package for compilation in your packaging script:
 
@@ -41,6 +42,72 @@ or on Windows:
 ```powershell
 . C:\var\vcap\packages\golang-1.26-windows\bosh\runtime.ps1
 go run ...
+```
+
+## FIPS 140-3 Support
+
+Starting with Go 1.24, the Go standard library includes a native FIPS 140-3 validated
+cryptographic module ([CMVP Certificate #5247](https://csrc.nist.gov/projects/cryptographic-module-validation-program/certificate/5247)).
+This repository provides FIPS variant packages that compile Go binaries with the certified
+crypto module embedded and FIPS mode enabled by default.
+
+FIPS packages use the `fips-` prefix naming convention (e.g. `fips-golang-1.26-linux`)
+which integrates with the `PREFIX` parameter in the shared CI tasks from
+`wg-app-platform-runtime-ci`.
+
+To vendor the FIPS package into your release:
+
+```
+$ bosh vendor-package fips-golang-1.26-linux ~/workspace/bosh-package-golang-release
+```
+
+To use it in your packaging script:
+
+```bash
+#!/bin/bash -eu
+source /var/vcap/packages/fips-golang-1.26-linux/bosh/compile.env
+go build ...
+```
+
+Or using a glob (for forward-compatible version bumps):
+
+```bash
+#!/bin/bash -eu
+source /var/vcap/packages/fips-golang-*-linux/bosh/compile.env
+go build ...
+```
+
+The FIPS compile environment sets:
+- `GOFIPS140=v1.0.0` - embeds the CMVP-certified crypto module snapshot (v1.0.0)
+- `-tags=fips140` - sets `DefaultGODEBUG=fips140=on`, activating FIPS at runtime
+
+Binaries built with this package will:
+- Perform integrity self-checks at initialization
+- Run known-answer self-tests (KATs) for all crypto algorithms
+- Use NIST SP 800-90A DRBG for random number generation
+- Restrict TLS to FIPS-approved cipher suites and protocol versions
+- No code changes are required in consuming releases
+
+### Verifying FIPS mode
+
+After deploying a binary built with the FIPS package, verify with:
+
+```bash
+$ strings /var/vcap/packages/<package>/bin/<binary> | grep "fips140=on"
+build   DefaultGODEBUG=...,fips140=on,...
+```
+
+### CI integration
+
+The shared `bump-golang-package-name` task in `wg-app-platform-runtime-ci` supports
+FIPS packages via the `PREFIX` parameter:
+
+```yaml
+- task: bump-golang-package-name-fips-linux
+  file: ci/shared/tasks/bump-golang-package-name/linux.yml
+  params:
+    PLATFORM: linux
+    PREFIX: fips
 ```
 
 ## Development

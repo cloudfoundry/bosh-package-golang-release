@@ -1,0 +1,8 @@
+---
+name: fips-golang-1.26-linux-test
+
+dependencies:
+- fips-golang-1.26-linux
+
+files:
+- test-fips.go
