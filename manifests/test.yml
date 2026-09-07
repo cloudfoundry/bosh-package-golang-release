@@ -56,3 +56,16 @@ instance_groups:
   stemcell: default
   networks:
   - name: default
+
+- name: fips-golang-1.26-test
+  azs: [z1]
+  instances: 1
+  jobs:
+  - name: fips-golang-1.26-((job-name))
+    release: golang
+    properties: {}
+  vm_type: default
+  vm_extensions: ((ephemeral-disk))
+  stemcell: default
+  networks:
+  - name: default

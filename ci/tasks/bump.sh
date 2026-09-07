@@ -53,6 +53,12 @@ for version in ${versions[*]}; do
     fi
   done
 
+  # FIPS variants share the same Go binary blob (linux only).
+  # Sync the version file so CI and consumers track the same Go patch version.
+  if [ -d "./packages/fips-golang-${version}-linux" ]; then
+    cp "../golang-${version}/.resource/version" "./packages/fips-golang-${version}-linux/"
+  fi
+
   if [[ "$( git status --porcelain )" != "" ]]; then
     git commit -am "Bump to golang $(cat ../golang-$version/.resource/version)" -m "$(cd ../golang-$version && ls)"
   fi
