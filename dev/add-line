@@ -14,6 +14,11 @@ done
 find packages/*-${new}-* -type file -print0 | xargs -0 sed -i "" "s/${last}/${new}/g"
 find packages/*-1-* -type file -print0 | xargs -0 sed -i "" "s/${last}/${new}/g"
 
+# reset placeholder patch versions to major.minor.0 until the pipeline bumps them
+for version_file in packages/golang-${new}-{darwin,linux,windows}/version packages/golang-1-{darwin,linux,windows}/version; do
+    printf "%s.0" "${new}" > "${version_file}"
+done
+
 # jobs
 for dir in test test-windows; do
     cp -fr jobs/golang-{${last},${new}}-${dir}/
