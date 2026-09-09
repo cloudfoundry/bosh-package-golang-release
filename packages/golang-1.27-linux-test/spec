@@ -1,0 +1,8 @@
+---
+name: golang-1.27-linux-test
+
+dependencies:
+- golang-1.27-linux
+
+files:
+- test.go
