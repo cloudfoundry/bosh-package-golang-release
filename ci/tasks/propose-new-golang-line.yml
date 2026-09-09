@@ -1,0 +1,18 @@
+---
+platform: linux
+
+image_resource:
+  type: registry-image
+  source:
+    repository: ghcr.io/cloudfoundry/bosh/cli
+
+inputs:
+- name: golang-release
+
+run:
+  path: golang-release/ci/tasks/propose-new-golang-line.sh
+
+params:
+  GIT_USER_NAME: CI Bot
+  GIT_USER_EMAIL: bots@cloudfoundry.org
+  GH_TOKEN:
