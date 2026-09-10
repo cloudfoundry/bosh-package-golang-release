@@ -79,7 +79,7 @@ jobs:
     file: golang-release/ci/tasks/propose-new-golang-line.yml
     image: bosh-cli-image
     params:
-      GH_TOKEN: ((github_pr_token))
+      GH_TOKEN: ((github_public_repo_token))
   on_failure:
     do:
     - put: slack-alert
