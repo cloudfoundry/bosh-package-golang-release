@@ -30,7 +30,7 @@ set -x
 git config user.name "CI Bot"
 git config user.email "cf-bosh-eng@pivotal.io"
 
-# The dev/add-line script blindly replaces the old version being removed with the
+# The ci/tasks/add-line.sh script blindly replaces the old version being removed with the
 # new version being added. This means that the two versions may swap orders within
 # this script.
 #

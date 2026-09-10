@@ -49,10 +49,16 @@ To run tests `cd tests/ && BOSH_ENVIRONMENT=vbox ./run.sh`
 
 ## Adding a new golang line
 
-To add a new line, edit the variable in the top of `dev/add-line`
-Execute the script, commit changes, and update the pipeline.
+The pipeline job `propose-new-golang-line` should automatically detect when a
+new line of go is available and create a PR.
 
-The blobs necessary for the new version line will automatically be added via CI. The `build-docker-image` job will fail until the blobs are added by the `bump` job.
+If you need to manually update the versions for some reason, edit the variables
+at the top of `ci/tasks/add-line.sh`. Then execute the script, commit changes,
+and update the pipeline.
+
+The blobs necessary for the new version line will automatically be added via CI.
+The `build-docker-image` job will fail until the blobs are added by the `bump`
+job.
 
 ### Windows
 
