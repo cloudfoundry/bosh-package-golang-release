@@ -45,6 +45,12 @@ git remote set-url origin https://github.com/cloudfoundry/bosh-package-golang-re
 gh auth setup-git
 
 branch="add-go-${detected_new}-line"
+
+if git ls-remote --exit-code origin "refs/heads/${branch}" >/dev/null 2>&1; then
+  echo "branch ${branch} already exists on origin, presumably awaiting PR review; skipping until it is merged or closed"
+  exit 0
+fi
+
 git checkout -b "${branch}"
 
 sed -i "s/^old=.*/old=${current_last}/" ci/tasks/add-line.sh
