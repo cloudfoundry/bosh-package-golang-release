@@ -67,6 +67,28 @@ jobs:
           Build for $BUILD_PIPELINE_NAME failed!
           View it here: $ATC_EXTERNAL_URL/teams/$BUILD_TEAM_NAME/pipelines/$BUILD_PIPELINE_NAME/jobs/$BUILD_JOB_NAME/builds/$BUILD_NAME
 
+- name: propose-new-golang-line
+  serial: true
+  plan:
+  - in_parallel:
+    - get: golang-release
+    - get: golang-line-check-interval
+      trigger: true
+    - get: bosh-cli-image
+  - task: propose-new-golang-line
+    file: golang-release/ci/tasks/propose-new-golang-line.yml
+    image: bosh-cli-image
+    params:
+      GH_TOKEN: ((github_public_repo_token))
+  on_failure:
+    do:
+    - put: slack-alert
+      params:
+        channel: '#bosh-private'
+        text: |
+          Build for $BUILD_PIPELINE_NAME failed!
+          View it here: $ATC_EXTERNAL_URL/teams/$BUILD_TEAM_NAME/pipelines/$BUILD_PIPELINE_NAME/jobs/$BUILD_JOB_NAME/builds/$BUILD_NAME
+
 - name: build-docker-image
   plan:
   - get: golang-release
@@ -230,6 +252,11 @@ resources:
   type: slack-notification
   source:
     url: ((slack_hook_url))
+
+- name: golang-line-check-interval
+  type: time
+  source:
+    interval: 24h
 
 resource_types:
 - name: dynamic-metalink
