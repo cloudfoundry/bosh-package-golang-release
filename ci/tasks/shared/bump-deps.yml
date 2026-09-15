@@ -26,3 +26,4 @@ params:
   DESIRED_GO_MAJOR_MINOR: # Defaults to the previous major.minor version to avoid breaking others who import the packages and are not yet on the latest version.
   BUMP_TEST_DEPS: # any non-empty value updates test dependencies by passing `-t` to `go get -u`
   SOURCE_PATH:
+  GIT_COMMIT_MESSAGE_SUFFIX:
