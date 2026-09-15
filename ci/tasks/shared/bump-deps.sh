@@ -72,8 +72,14 @@ if [ "$(git status --porcelain)" != "" ]; then
   git config user.name "${GIT_USER_NAME}"
   git config user.email "${GIT_USER_EMAIL}"
   if [ "${CURRENT_GO_MOD_MAJOR_MINOR}" == "${DESIRED_GO_MAJOR_MINOR}" ]; then
-    git commit -m "Update vendored dependencies"
+    commit_message="Update vendored dependencies"
   else
-    git commit -m "Update go version to ${DESIRED_GO_MAJOR_MINOR}" -m "- (and update vendored dependencies)"
+    commit_message="Update go version to ${DESIRED_GO_MAJOR_MINOR}
+
+- (and update vendored dependencies)"
   fi
+  if [ -n "${GIT_COMMIT_MESSAGE_SUFFIX:-}" ]; then
+    commit_message="${commit_message}${GIT_COMMIT_MESSAGE_SUFFIX}"
+  fi
+  git commit -m "${commit_message}"
 fi
