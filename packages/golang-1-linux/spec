@@ -4,8 +4,8 @@ name: golang-1-linux
 files:
 - compile.env.unix
 - runtime.env.unix
-# Both linux tarballs are shipped so the package compiles on amd64 and arm64
-# (Graviton) VMs; packaging unpacks the one matching the compile VM.
-# RFC: https://github.com/cloudfoundry/community/pull/1530
-- go1.27*.linux-amd64.tar.gz
-- go1.27*.linux-arm64.tar.gz
+# All linux tarballs (amd64 and arm64) are shipped so the package compiles on
+# amd64 and arm64 (Graviton) VMs; packaging unpacks the one matching the compile
+# VM. A single pattern keeps create-release working while only one arch's blob
+# is present. RFC: https://github.com/cloudfoundry/community/pull/1530
+- go1.27*.linux-*.tar.gz
