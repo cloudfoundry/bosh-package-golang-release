@@ -5,18 +5,31 @@ set -eux
 function replace_if_necessary() {
   version=$1
   platform=$2
-  blobname=$(basename $(ls ../golang-${version}/*${platform}*))
+  arch=$3
+  # Match on "<platform>-<arch>" so the per-architecture linux tarballs
+  # (linux-amd64, linux-arm64) are tracked as separate blobs.
+  blobname=$(basename $(ls ../golang-${version}/*.${platform}-${arch}.*))
 
   cp ../golang-${version}/.resource/version ./packages/golang-${version}-${platform}/
 
   if ! bosh blobs | grep -q ${blobname}; then
-    existing_blob=$(bosh blobs | awk '{print $1}' | grep "go${version}.*${platform}" || true)
+    existing_blob=$(bosh blobs | awk '{print $1}' | grep "go${version}.*\.${platform}-${arch}\." || true)
     if [ -n "${existing_blob}" ]; then
       bosh remove-blob ${existing_blob}
     fi
     bosh add-blob --sha2 ../golang-${version}/${blobname} ${blobname}
     bosh upload-blobs
   fi
+}
+
+# Architectures shipped per platform. linux ships arm64 alongside amd64 so the
+# golang linux packages compile on ARM64 (Graviton) VMs.
+# RFC: https://github.com/cloudfoundry/community/pull/1530
+function platform_arches() {
+  case "$1" in
+    linux) echo "amd64 arm64" ;;
+    *)     echo "amd64" ;;
+  esac
 }
 
 cd bumped-golang-release
@@ -46,7 +59,9 @@ platforms=(linux darwin windows)
 
 for version in ${versions[*]}; do
   for platform in ${platforms[*]}; do
-    replace_if_necessary $version $platform
+    for arch in $(platform_arches $platform); do
+      replace_if_necessary $version $platform $arch
+    done
 
     if [[ "$version" == "$latest_version" ]]; then
       cp "../golang-${version}/.resource/version" "./packages/golang-1-${platform}/"

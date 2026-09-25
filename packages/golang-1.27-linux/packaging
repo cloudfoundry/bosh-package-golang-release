@@ -1,6 +1,11 @@
 set -e -x -u
 
-tar xzf go*.linux-amd64.tar.gz
+# Unpack the Go toolchain built for the compile VM's architecture.
+case "$(uname -m)" in
+  aarch64|arm64) go_arch="arm64" ;;
+  *)             go_arch="amd64" ;;
+esac
+tar xzf go*.linux-${go_arch}.tar.gz
 
 cp -R go/* ${BOSH_INSTALL_TARGET}
 

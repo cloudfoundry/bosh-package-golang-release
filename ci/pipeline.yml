@@ -138,6 +138,43 @@ jobs:
     params:
       image: image/image.tar
 
+# arm64 (Graviton) golang-release image. RFC: cloudfoundry/community#1530.
+# Mirrors the golang-release image build on an arm64 worker. The linux golang
+# packages unpack the arm64 Go tarball there, so the image carries an arm64 Go
+# toolchain under /var/vcap/packages. Pushed under a separate "latest-arm64" tag
+# so the amd64 "latest" image is never overwritten; arm64 image builds in other
+# releases (bosh-agent, bosh integration) copy Go from this tag. Dormant until an
+# `arm64`-tagged worker is registered (RFC D3 / Open Question 2).
+- name: build-docker-image-arm64
+  plan:
+  - get: golang-release
+    trigger: true
+    tags: [ arm64 ]
+  - task: build-golang-release-image
+    privileged: true
+    tags: [ arm64 ]
+    config:
+      platform: linux
+      image_resource:
+        type: registry-image
+        source:
+          repository: concourse/oci-build-task
+      inputs:
+      - name: golang-release
+      outputs:
+      - name: image
+      params:
+        CONTEXT: golang-release
+        DOCKERFILE: golang-release/ci/docker/golang-release/Dockerfile
+        LABEL_org.opencontainers.image.source: https://github.com/cloudfoundry/bosh-package-golang-release
+      run:
+        path: build
+  - put: golang-release-image-arm64
+    no_get: true
+    tags: [ arm64 ]
+    params:
+      image: image/image.tar
+
 
 resources:
 - name: bosh-shared-ci
@@ -161,6 +198,14 @@ resources:
     username: ((github_read_write_packages.username))
     password: ((github_read_write_packages.password))
 
+# arm64 (Graviton) golang-release image, published by build-docker-image-arm64.
+- name: golang-release-image-arm64
+  type: registry-image
+  source:
+    repository: ghcr.io/cloudfoundry/bosh/golang-release
+    tag: latest-arm64
+    username: ((github_read_write_packages.username))
+    password: ((github_read_write_packages.password))
 - name: golang-release-security-scanner-image
   type: registry-image
   source:
@@ -226,6 +271,7 @@ resources:
             "hashes": [ { "type": "sha-256", "hash": .sha256 } ] } ) ) } )[]'
     include_files:
     - go*.linux-amd64.tar.gz
+    - go*.linux-arm64.tar.gz
     - go*.windows-amd64.zip
     - go*.darwin-amd64.tar.gz
 
@@ -245,6 +291,7 @@ resources:
             "hashes": [ { "type": "sha-256", "hash": .sha256 } ] } ) ) } )[]'
     include_files:
     - go*.linux-amd64.tar.gz
+    - go*.linux-arm64.tar.gz
     - go*.windows-amd64.zip
     - go*.darwin-amd64.tar.gz
 
