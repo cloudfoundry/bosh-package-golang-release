@@ -63,7 +63,7 @@ done
 
 # Only upgrade the full module graph (including test dependencies of dependencies) when
 # a direct bump is already happening, so indirect-only updates don't produce extra commits.
-if [ "$(git status --porcelain go.mod)" != "" ]; then
+if ! git diff --quiet -- go.mod; then
   for goos in "${goos_array[@]}"; do
     GOOS="${goos}" go get -u -t all "go@${DESIRED_GO_MAJOR_MINOR}.0" "toolchain@go${DESIRED_GO_MAJOR_MINOR}.0"
   done
@@ -73,7 +73,7 @@ go mod tidy -go="${DESIRED_GO_MAJOR_MINOR}.0"
 
 go mod vendor
 
-if [ "$(git status --porcelain)" != "" ]; then
+if [ -n "$(git status --porcelain -- go.mod go.sum vendor)" ]; then
   git status
   git add go.mod
   [ -f go.sum ] && git add vendor go.sum
