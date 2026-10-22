@@ -13,18 +13,16 @@ if [ -n "${GO_PACKAGE}" ]; then
   unset GOPATH
 fi
 
-#intentionally cause an explicit commit if the underlying go version in our compiled Dockerfile changes.
-#assume the go-dep-bumper and bosh-utils are bumping at the same cadence.
-GO_MAJOR=$(go version | sed 's/go version go\([0-9]\+\)\.\([0-9]\+\)[. ].*$/\1/g')
-GO_MINOR=$(go version | sed 's/go version go\([0-9]\+\)\.\([0-9]\+\)[. ].*$/\2/g')
-CURRENT_GO_MOD_MAJOR_MINOR=$(grep -E "^go 1.*" go.mod | sed "s/^\(go \)\([0-9]\+.[0-9]\+\).*/\2/")
+GO_MAJOR=$(go version | sed -E 's/go version go([0-9]+)\.([0-9]+)[. ].*$/\1/')
+GO_MINOR=$(go version | sed -E 's/go version go([0-9]+)\.([0-9]+)[. ].*$/\2/')
+CURRENT_GO_MOD_MAJOR_MINOR=$(sed -nE 's/^go ([0-9]+\.[0-9]+).*/\1/p' go.mod)
 
 if [ -z "${DESIRED_GO_MAJOR_MINOR}" ]; then
   DESIRED_GO_MAJOR_MINOR="${GO_MAJOR}.$((GO_MINOR-1))"
 fi
 
 function go_get() {
-  local go_version="${DESIRED_GO_MAJOR_MINOR}.0"
+  local go_version="${DESIRED_GO_MAJOR_MINOR}"
   local package_arg="${1}"
   local args=(-u)
   if [[ -n "${BUMP_TEST_DEPS:-}" ]]; then
@@ -49,7 +47,7 @@ fi
 for goos in "${goos_array[@]}"; do
   go_get ./...
 
-  # NEW: Update Go 1.24+ tool dependencies if any are declared
+  # Update Go 1.24+ tool dependencies if any are declared.
   if grep -qE '^tool |^tool\s*\(' go.mod; then
     echo "Updating go.mod tool entries and dependencies..."
     go_get tool
@@ -65,11 +63,17 @@ done
 # a direct bump is already happening, so indirect-only updates don't produce extra commits.
 if ! git diff --quiet -- go.mod; then
   for goos in "${goos_array[@]}"; do
-    GOOS="${goos}" go get -u -t all "go@${DESIRED_GO_MAJOR_MINOR}.0" "toolchain@go${DESIRED_GO_MAJOR_MINOR}.0"
+    GOOS="${goos}" go get -u -t all "go@${DESIRED_GO_MAJOR_MINOR}" "toolchain@go${DESIRED_GO_MAJOR_MINOR}"
   done
 fi
 
-go mod tidy -go="${DESIRED_GO_MAJOR_MINOR}.0"
+go mod tidy
+
+UPDATED_GO_MOD_MAJOR_MINOR=$(sed -nE 's/^go ([0-9]+\.[0-9]+).*/\1/p' go.mod)
+if [ "${UPDATED_GO_MOD_MAJOR_MINOR}" != "${DESIRED_GO_MAJOR_MINOR}" ]; then
+  echo "Error: go.mod requires Go ${UPDATED_GO_MOD_MAJOR_MINOR}, expected ${DESIRED_GO_MAJOR_MINOR}.x" >&2
+  exit 1
+fi
 
 go mod vendor
 
