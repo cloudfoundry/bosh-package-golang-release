@@ -7,6 +7,7 @@ echo "A better maintained generic version of this task is available here: https:
 echo "Please transition to using that script as this one is unlikely to receive future updates"
 echo "!!!!!!!!!!!!!!"
 
+script_dir=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
 version_number="$(cat version/version)"
 
 pushd "input_repo/$SOURCE_PATH"
@@ -16,14 +17,24 @@ current_list=$(echo "$current_json" | jq -r "map(.VulnerabilityID) | sort | join
 
 if [ -n "$GIT_PRIVATE_KEY" ]; then
   mkdir -p ~/.ssh
+  chmod 700 ~/.ssh
+  if [ -n "${GIT_KNOWN_HOSTS:-}" ]; then
+    printf '%s\n' "$GIT_KNOWN_HOSTS" > ~/.ssh/known_hosts
+  else
+    cp "$script_dir/github_known_hosts" ~/.ssh/known_hosts
+  fi
+  chmod 600 ~/.ssh/known_hosts
   cat > ~/.ssh/config <<EOF
-StrictHostKeyChecking no
+StrictHostKeyChecking yes
+UserKnownHostsFile "${HOME}/.ssh/known_hosts"
 EOF
 
-  echo "$GIT_PRIVATE_KEY" > git-private-key
-  chmod 600 git-private-key
+  key_file=$(mktemp)
+  trap 'rm -f "$key_file"; ssh-agent -k >/dev/null 2>&1 || true' EXIT
+  printf '%s\n' "$GIT_PRIVATE_KEY" > "$key_file"
   eval "$(ssh-agent -s)"
-  ssh-add git-private-key
+  ssh-add "$key_file"
+  rm -f "$key_file"
 fi
 
 git checkout "v${version_number}"
