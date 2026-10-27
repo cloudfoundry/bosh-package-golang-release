@@ -62,12 +62,11 @@ done
 # Only upgrade the full module graph (including test dependencies of dependencies) when
 # a direct bump is already happening, so indirect-only updates don't produce extra commits.
 if ! git diff --quiet -- go.mod; then
-  # certstrap v1.4.1 requires Go 1.27.3; exclude it for Go 1.26 bumps until https://github.com/cloudfoundry/bosh-package-golang-release/issues/51.
-  go mod edit -exclude=github.com/square/certstrap@v1.4.1
   for goos in "${goos_array[@]}"; do
-    GOOS="${goos}" go get -u -t all "go@${DESIRED_GO_MAJOR_MINOR}" "toolchain@go${DESIRED_GO_MAJOR_MINOR}"
+    GOOS="${goos}" go get -u -t all
+    # Restore the target Go version separately so Go can downgrade incompatible dependencies.
+    GOOS="${goos}" go get "go@${DESIRED_GO_MAJOR_MINOR}" "toolchain@go${DESIRED_GO_MAJOR_MINOR}"
   done
-  go mod edit -dropexclude=github.com/square/certstrap@v1.4.1
 fi
 
 go mod tidy
