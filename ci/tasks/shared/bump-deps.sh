@@ -63,7 +63,9 @@ done
 # a direct bump is already happening, so indirect-only updates don't produce extra commits.
 if ! git diff --quiet -- go.mod; then
   for goos in "${goos_array[@]}"; do
-    GOOS="${goos}" go get -u -t all "go@${DESIRED_GO_MAJOR_MINOR}" "toolchain@go${DESIRED_GO_MAJOR_MINOR}"
+    GOOS="${goos}" go get -u -t all
+    # Restore the target Go version separately so Go can downgrade incompatible dependencies.
+    GOOS="${goos}" go get "go@${DESIRED_GO_MAJOR_MINOR}" "toolchain@go${DESIRED_GO_MAJOR_MINOR}"
   done
 fi
 
