@@ -138,13 +138,8 @@ jobs:
     params:
       image: image/image.tar
 
-# arm64 (Graviton) golang-release image. RFC: cloudfoundry/community#1530.
-# Mirrors the golang-release image build on an arm64 worker. The linux golang
-# packages unpack the arm64 Go tarball there, so the image carries an arm64 Go
-# toolchain under /var/vcap/packages. Pushed under a separate "latest-arm64" tag
-# so the amd64 "latest" image is never overwritten; arm64 image builds in other
-# releases (bosh-agent, bosh integration) copy Go from this tag. Dormant until an
-# `arm64`-tagged worker is registered (RFC D3 / Open Question 2).
+# Builds the golang-release image on an arm64 worker. It is pushed to a separate
+# "latest-arm64" tag so the amd64 "latest" image is never overwritten.
 - name: build-docker-image-arm64
   plan:
   - get: golang-release
@@ -198,7 +193,6 @@ resources:
     username: ((github_read_write_packages.username))
     password: ((github_read_write_packages.password))
 
-# arm64 (Graviton) golang-release image, published by build-docker-image-arm64.
 - name: golang-release-image-arm64
   type: registry-image
   source:

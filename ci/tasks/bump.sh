@@ -22,9 +22,7 @@ function replace_if_necessary() {
   fi
 }
 
-# Architectures shipped per platform. linux ships arm64 alongside amd64 so the
-# golang linux packages compile on ARM64 (Graviton) VMs.
-# RFC: https://github.com/cloudfoundry/community/pull/1530
+# linux also ships arm64 so the golang linux packages compile on arm64 VMs.
 function platform_arches() {
   case "$1" in
     linux) echo "amd64 arm64" ;;

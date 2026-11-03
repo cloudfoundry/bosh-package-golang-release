@@ -1,7 +1,5 @@
-# TARGETARCH is provided automatically by BuildKit ("amd64" / "arm64"). The
-# bosh CLI source is selected per architecture: amd64 keeps copying it from
-# bosh/integration (amd64-only image); arm64 downloads the linux-arm64 release
-# binary. RFC: https://github.com/cloudfoundry/community/pull/1530
+# BuildKit sets TARGETARCH (amd64 or arm64). bosh/integration is amd64-only, so
+# arm64 takes the bosh CLI from its release binary instead.
 ARG TARGETARCH
 
 FROM bosh/integration:latest AS bosh-cli-amd64
@@ -17,7 +15,9 @@ RUN apt-get update && \
 FROM bosh-cli-${TARGETARCH} AS bosh-cli
 
 FROM ubuntu:jammy
+
 COPY --from=bosh-cli /usr/bin/bosh /usr/local/bin/bosh
+
 RUN apt-get update && \
     apt-get install -y \
         build-essential \
@@ -27,10 +27,9 @@ RUN apt-get update && \
         git \
         git-lfs \
         jq
+
 ADD . /tmp/release
-# Linux golang packages ship one Go tarball per architecture, so copy every
-# tarball the package spec lists; the package's packaging script unpacks the one
-# matching the build architecture.
+
 RUN cd /tmp/release && \
     bosh sync-blobs && \
     mkdir -p /var/vcap/packages && mkdir -p /var/vcap/data && \
@@ -38,9 +37,8 @@ RUN cd /tmp/release && \
         rm -rf /tmp/workspace && \
         mkdir /tmp/workspace && \
         cp -r /tmp/release/src/* /tmp/workspace/ && \
-        for blob_filename in $(bosh int /tmp/release/packages/$package/spec --path /files | grep -o "go1.*.tar.gz"); do \
-            cp /tmp/release/blobs/${blob_filename} /tmp/workspace; \
-        done && \
+        blob_filename=$(bosh int /tmp/release/packages/$package/spec --path /files | grep -o "go1.*.tar.gz") && \
+        cp /tmp/release/blobs/${blob_filename} /tmp/workspace && \
         chmod +x /tmp/release/packages/$package/packaging && \
         mkdir -p /var/vcap/packages/$package && \
         cd /tmp/workspace && \
@@ -48,6 +46,7 @@ RUN cd /tmp/release && \
         cd /tmp; \
     done && \
     rm -r /tmp/release /tmp/workspace
+
 # Default Golang environment to golang-1-linux. These values are pulled from the
 # src/1/compile.env.linux environment file.
 ENV GOROOT "/var/vcap/packages/golang-1-linux"
