@@ -1,24 +1,24 @@
-go1.26.8.darwin-amd64.tar.gz:
-  size: 67759394
-  object_id: 5ec1f21d-55a5-4298-5420-67665b6d64f7
-  sha: sha256:186be014105aa6542b767d2c6ed5cca10a0214bdff809ef1724022a8c7894150
-go1.26.8.linux-amd64.tar.gz:
-  size: 66897291
-  object_id: 91081e84-b74f-4a1c-5e86-10be06da6285
-  sha: sha256:d0f743b33e8d8945e6b1f432edd15785c70507121d6e2a723b21285eddf8b57b
-go1.26.8.windows-amd64.zip:
-  size: 74957586
-  object_id: 1e312de3-f4c4-4b34-5cc9-496b15517a5f
-  sha: sha256:b92c3b2adae85a11ba71fe7216daf0d84e82af4c8ab6c5625807f28622043a59
-go1.27.1.darwin-amd64.tar.gz:
-  size: 71621873
-  object_id: 2c3fe650-0f7b-4001-6a36-bfb97e6d50a7
-  sha: sha256:8f8f52c6649542cf027bbc9b9c68d1ec042f9f34808a40413f0b8b3f66f3caa4
-go1.27.1.linux-amd64.tar.gz:
-  size: 70553950
-  object_id: 720ffc25-ddb9-49b3-53eb-0ee7ac548902
-  sha: sha256:63d339f0da5ab53635a56f2490a7984dfe12dfcff22ad749f63edaf590168445
-go1.27.1.windows-amd64.zip:
-  size: 78931360
-  object_id: ce35128c-0f2d-4045-6d1f-2f35ccd974f7
-  sha: sha256:a3911b5e0e1b1053f25ed0675f4c1c6aad1e2bfcf253df2b9be4caabd2edd95d
+go1.26.10.darwin-amd64.tar.gz:
+  size: 67810289
+  object_id: 96f8c8f9-b07a-4a26-607a-a7e3d1354fc8
+  sha: sha256:e820ab780c273ae4a340b79d0f3c4313b74ee029aa3874792145d44b9f4f91da
+go1.26.10.linux-amd64.tar.gz:
+  size: 66936659
+  object_id: 0e34127c-aa0c-43f3-787a-25b5d9c8c3f4
+  sha: sha256:ccfe7ae822d2c2f41f4fe7c956199967a4dac22d0ee0d2b2bfdb440aab3b20c5
+go1.26.10.windows-amd64.zip:
+  size: 75004774
+  object_id: 0268c803-b03e-46b0-4420-dad85ef34fb7
+  sha: sha256:7ecd2d7260e82c59bcbd7f1077a07cee2dea607295b858df67195a1e4e09629b
+go1.27.3.darwin-amd64.tar.gz:
+  size: 71697771
+  object_id: cd33392b-b3a0-49a8-52da-8d62c7965178
+  sha: sha256:b6f8e931e4ab497fcde6da8ae4499a58f9d258e55c8a80824a516eae5950a750
+go1.27.3.linux-amd64.tar.gz:
+  size: 70588678
+  object_id: 1b068a11-a523-46f6-509d-2447c2c725b1
+  sha: sha256:65efbc80fdc1fa2cd2631cad5b481777a68e8725f34e89f50fc6ac714e379b40
+go1.27.3.windows-amd64.zip:
+  size: 79010309
+  object_id: 32ab1244-49b7-44c5-750e-ab2b7364a87f
+  sha: sha256:f26081f438319757f8a1b46d7d0b2c5ec7583d4038e485e0aa725cfde7885fff
