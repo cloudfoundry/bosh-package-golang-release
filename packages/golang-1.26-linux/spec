@@ -4,4 +4,6 @@ name: golang-1.26-linux
 files:
 - compile.env.unix
 - runtime.env.unix
-- go1.26*.linux-amd64.tar.gz
+# One pattern matches the amd64 and arm64 tarballs, and also keeps create-release
+# working while only the amd64 blob exists.
+- go1.26*.linux-*.tar.gz

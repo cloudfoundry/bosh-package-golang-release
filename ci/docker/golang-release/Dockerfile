@@ -1,6 +1,22 @@
+# BuildKit sets TARGETARCH (amd64 or arm64). bosh/integration is amd64-only, so
+# arm64 takes the bosh CLI from its release binary instead.
+ARG TARGETARCH
+
+FROM bosh/integration:latest AS bosh-cli-amd64
+
+FROM ubuntu:jammy AS bosh-cli-arm64
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends ca-certificates curl jq && \
+    url="$(curl -s https://api.github.com/repos/cloudfoundry/bosh-cli/releases/latest \
+      | jq -r '.assets[] | select(.name | endswith("-linux-arm64")) | .browser_download_url')" && \
+    curl --show-error -sL "${url}" -o /usr/bin/bosh && \
+    chmod +x /usr/bin/bosh
+
+FROM bosh-cli-${TARGETARCH} AS bosh-cli
+
 FROM ubuntu:jammy
 
-COPY --from=bosh/integration:latest /usr/bin/bosh /usr/local/bin/bosh
+COPY --from=bosh-cli /usr/bin/bosh /usr/local/bin/bosh
 
 RUN apt-get update && \
     apt-get install -y \
