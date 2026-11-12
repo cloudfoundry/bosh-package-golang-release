@@ -6,6 +6,10 @@ go1.26.11.linux-amd64.tar.gz:
   size: 66999944
   object_id: fe9a0908-ffe2-40a2-71a0-938d22f33918
   sha: sha256:9849f4e04ee35303714e34fbc3ac8ab44ea3e448a95aa182f91e3b9b79c710ec
+go1.26.11.linux-arm64.tar.gz:
+  size: 63895190
+  object_id: 8acc5691-3137-442a-694e-c4969ea60a57
+  sha: sha256:6c2f29b458b5add0835f18b776f69c8881a6d88428f1484a6da55755e620757e
 go1.26.11.windows-amd64.zip:
   size: 75074581
   object_id: 66d16d0d-61d8-4534-54d7-4375bf5d4ba2
